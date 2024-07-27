@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Leagues{% endblock title %}
+
+{% block content %}
+<h1 class="heading">Leagues</h1>
+
+<div class="lg">
+    {% for league_info in leagues %}
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <div class="league-card-title">
+                    <h2>{{ league_info.league.name }}</h2>
+                    <p style="opacity: 0.75;">Country: {{ league_info.country.name }}</p>
+                </div>
+                <img src="{{ league_info.league.logo }}"" alt=" {{ league_info.league.name }} Logo" class="leagues-images">
+            </div>
+            <div class="flip-card-back">
+                <h2 class="title">{{ league_info.league.name }}</h2>
+                <a href="/fixtures?id={{ league_info.league.id|urlencode }}" style="text-decoration: none;">Fixtures →</a>
+                <a href="/standings?id={{ league_info.league.id|urlencode }}"
+                    style="text-decoration: none;">Standings →</a>
+                <a href="/teams?id={{ league_info.league.id|urlencode }}" style="text-decoration: none;">Teams →</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<a href="/alleagues"> More Leagues</a>
+
+{% endblock %}

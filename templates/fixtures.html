@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Fixtures{% endblock title %}
+
+{% block content %}
+<h1>Fixtures</h1>
+{% for fixture in data.response %}
+
+
+
+    <div class="scorecard">
+      <h2>{{ fixture.league.name }}</h2>
+      
+      <div class="team">
+          <div class="team-name"><img src="{{ fixture.teams.home.logo }}" alt="" style="width: 20px; height: auto;">
+            {{ fixture.teams.home.name }}
+          </div>
+          <div class="team-score">{{ fixture.goals.home }}</div>
+      </div>
+
+      <div class="team">
+          <div class="team-name"><img src="{{ fixture.teams.away.logo }}" alt="" style="width: 20px; height: auto;">
+           {{ fixture.teams.away.name }}
+          </div>
+          <div class="team-score">{{ fixture.goals.away }}</div>
+      </div>
+      <div class="match-info">
+         <div class="match-status">{% if fixture.fixture.status.elapsed < 45 %} 
+            <strong>{{ fixture.fixture.status.elapsed }}'</strong>
+            {% elif fixture.fixture.status.short == "HT" %}
+            <strong>Half-Time</strong>
+            {% elif fixture.fixture.status.elapsed < 90 %} 
+            <strong>{{ fixture.fixture.status.elapsed }}'</strong>
+            {% elif fixture.fixture.status.elapsed >= 90 %}
+            <strong>(Full-Time)</strong>
+            {% else %}
+            <strong>(Upcoming)</strong>
+            {% endif %}</div>
+         </div>
+         <div class="match-date">{{ fixture.fixture.date }}</div>
+  </div>
+
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Overlap</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+<body>
+    <nav class="dic">
+        <ul>
+            <li><img class="icon" src="{% static 'css\img\logo.png' %}" alt="hello"></li>
+            <li><a href="/">Home</a></li>            
+            <li><a href="/leagues">Leagues</a></li>
+        </ul>   
+    </nav> 
+    
+    {% block content %}
+    {% endblock %}
+
+
+    <footer class="foot">
+        <p>&copy; 2024 the overlap. All rights reserved.</p>
+    </footer>
+</body>
+</html>

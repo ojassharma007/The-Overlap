@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Team Statistics{% endblock %}
+
+{% block content %}
+<h1>Team Statistics</h1>
+
+    <div>
+        <h2>{{ teams_statistics.team.name }}</h2>
+        <img src="{{ teams_statistics.team.logo }}" alt="{{ teams_statistics.team.name }} Logo">
+        
+        <h4>Fixtures Played</h4>
+        <p>Home: {{ teams_statistics.fixtures.played.home }}</p>
+        <p>Away: {{ teams_statistics.fixtures.played.away }}</p>
+        <p>Total: {{ teams_statistics.fixtures.played.total }}</p>
+
+        <h4>Wins</h4>
+        <p>Home: {{ teams_statistics.fixtures.wins.home }}</p>
+        <p>Away: {{ teams_statistics.fixtures.wins.away }}</p>
+        <p>Total: {{ teams_statistics.fixtures.wins.total }}</p>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Standings{% endblock title %}
+
+
+{% block content %}
+<h1>League Standings</h1>
+<table id="grid">
+    <thead>
+        <tr>
+            <th>Position</th>
+            <th>Logo</th>
+            <th>Team</th>
+            <th>Matches</th>
+            <th>Points</th>
+            <th>Goals For</th>
+            <th>Goals Against</th>
+            <th>Goal Difference</th>
+            <th>Form</th>
+            <th>Group</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in standings %}
+        {% for league in item.league.standings %}
+        {% for team in league %}
+        <tr>
+            <td>{{ team.rank }}</td>
+            <td><img src="{{ team.team.logo }}" alt="{{ team.team.name }}" width="30"></td>
+            <td>{{ team.team.name }}</td>
+            <td>{{ team.all.played }}</td>
+            <td>{{ team.points }}</td>
+            <td>{{ team.all.goals.for }}</td>
+            <td>{{ team.all.goals.against }}</td>
+            <td>{{ team.goalsDiff }}</td>
+            <td>{{ team.form | default:"No form data available" }}</td>
+            {% if team.group %}
+            <td>{{ team.group }}</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+        {% endfor %}
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Teams{% endblock title %}
+
+{% block content %}
+{% for league_info in leagues %}
+<h2>{{ league_info.league.name }}</h2>
+<a href="/fixtures?id={{ league_info.league.id|urlencode }}" style="text-decoration: none;">Fixtures</a>
+<a href="/standings?id={{ league_info.league.id|urlencode }}" style="text-decoration: none;">Standings</a>
+<a href="/teams?id={{ league_info.league.id|urlencode }}" style="text-decoration: none;">Teams</a>
+
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Teams{% endblock title %}
+
+{% block content %}
+<h1>Teams</h1>
+    <div>
+        {% for item in data %}
+        <div class="tam">
+            <img src="{{ item.team.logo }}" alt="{{ item.team.name }} Logo" style="width: 30px;">
+            {{ item.team.name }}
+            <a href="/stats?team_id={{ item.team.id|urlencode }}" style="text-decoration: none;">{{ item.team.name }}</a>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

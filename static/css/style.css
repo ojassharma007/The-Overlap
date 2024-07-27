@@ -1,0 +1,318 @@
+:root {
+  --color-50: #eefaeb;
+  --color-100: #dbf3d4;
+  --color-200: #bae8ae;
+  --color-300: #8fd87e;
+  --color-400: #69c655;
+  --color-500: #4aab37;
+  --color-600: #378b29;
+  --color-700: #2b6823;
+  --color-800: #265420;
+  --color-900: #23481f;
+  --color-950: #0e270c;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+* {
+  margin: 0%;
+  padding: 0%;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+}
+
+body {
+  /* background-color: #8ba487; */
+  background-color: var(--color-200);
+}
+
+/* navbar */
+
+.dic {
+  background-color: rgba(7, 7, 7, 0.868);
+  display: flex;
+  align-items: center;
+  position: sticky;
+  justify-content: space-between;
+}
+
+.dic ul {
+  display: flex;
+}
+
+.dic li {
+  list-style: none;
+  margin: 5px 5px 5px 5px;
+  font-size: 150%;
+}
+.dic li a {
+  display: block;
+  padding: 20px 30px;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+.icon {
+  /* background-color: rgba(220, 8, 8, 0.97); */
+  width: 54px;
+  height: 64px;
+  margin-left: 20px;
+}
+
+/* home */
+
+#section {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 5px 10px;
+}
+
+.head {
+  color: #1f1d1d;
+  font-size: 500%;
+  /* margin: 50px 10px; */
+}
+
+.img {
+  width: 20%;
+  margin-left: 100px;
+}
+
+.leagues {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(220px, 1fr)
+  ); /* Adjust minmax value as needed */
+  gap: 10px; /* Adjust gap between items */
+}
+
+.leagues img {
+  width: 50%;
+  height: auto;
+  margin: 7% 25%;
+}
+
+.home {
+  background-color: transparent;
+  width: 190px;
+  height: 225px;
+  margin: 10%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.title {
+  font-size: 1.5em;
+  font-weight: 900;
+  text-align: center;
+  margin: 0;
+}
+
+/* home cards */
+
+.home-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.home-front {
+  background: #ffffff75;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 110%;
+  border-radius: 100px;
+  border: 3px solid #677a64;
+}
+
+/* leagues */
+.heading {
+  display: flex;
+  justify-content: center;
+  font-size: 3rem;
+  margin-top: 4rem;
+  color: var(--color-950);
+}
+
+.lg {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem;
+  padding: 4rem;
+  justify-content: center;
+}
+
+.lg .flip-card {
+  width: 240px;
+  aspect-ratio: 3/4;
+  font-family: sans-serif;
+}
+
+.lg .title {
+  font-size: 1.5em;
+  font-weight: 900;
+  text-align: center;
+  margin: 0;
+}
+
+.lg .flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.lg .flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.lg .flip-card-front,
+.flip-card-back {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border: 1px solid var(--color-950);
+  border-radius: 1rem;
+  box-shadow: rgba(100, 100, 111, 0.1) 0px 7px 29px 0px;
+}
+
+.lg .flip-card-front {
+  background-color: var(--color-100);
+  color: var(--color-950);
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-direction: column-reverse;
+}
+
+.lg .flip-card-back {
+  background-color: var(--color-100);
+  color: var(--color-950);
+  transform: rotateY(180deg);
+  justify-content: center;
+  gap: 1rem;
+}
+
+.lg .flip-card-back a {
+  color: var(--color-950);
+  opacity: 0.75;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.lg .flip-card h2{
+  padding-bottom: 1rem;
+}
+
+.lg .leagues-images {
+  width: 50%;
+  aspect-ratio: 1;
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  mix-blend-mode: darken;
+}
+
+.lg .league-card-title {
+  padding: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  font-weight: 600;
+}
+
+/* standings */
+
+#grid {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 5px 0px;
+  font-size: 1.1em;
+  text-align: left;
+}
+
+#grid thead tr {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+#grid th,
+#grid td {
+  padding: 5px 10px;
+  border: 1px solid #ffffff;
+}
+
+#grid tbody tr {
+  border-bottom: 1px solid #ffffff;
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
+
+#grid tbody tr:nth-of-type(even) {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+#grid tbody tr:last-of-type {
+  border-bottom: 1px solid #ffffff;
+}
+
+/* fixtures */
+
+.scorecard {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px 120px;
+  max-width: 75%;
+  text-align: center;
+}
+
+.team {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.team-name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.team-score {
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.match-info {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #666666;
+}
+
+.match-date,
+.match-status {
+  margin: 5px 0;
+}
+
+/* footer */
+
+.foot {
+  background-color: bisque;
+  text-align: center;
+  margin-top: 28.4%;
+  position: sticky;
+}

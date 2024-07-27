@@ -74,7 +74,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "Football.wsgi.application"
+WSGI_APPLICATION = "Football.wsgi.app"
 
 
 # Database

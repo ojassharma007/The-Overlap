@@ -25,7 +25,8 @@ SECRET_KEY = "django-insecure-==asxhrq6ol)jq@xri^^hjabkh^k_z2xr(#1x4bmdx0grsnyij
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# api/settings.py
+ALLOWED_HOSTS = ["127.0.0.1", ".vercel.app"]
 
 
 # Application definition
@@ -139,9 +140,9 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': os.path.join(BASE_DIR, 'django_cache'),  # Use an absolute path
-        'TIMEOUT': 86400,  # Cache timeout in seconds (24 hours)
+    "default": {
+        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": os.path.join(BASE_DIR, "django_cache"),  # Use an absolute path
+        "TIMEOUT": 86400,  # Cache timeout in seconds (24 hours)
     }
 }

@@ -3,43 +3,44 @@
 {% block title %}Fixtures{% endblock title %}
 
 {% block content %}
-<h1>Fixtures</h1>
-{% for fixture in data.response %}
+<h1 class="h1-fixture">Fixtures</h1>
 
-
-
-    <div class="scorecard">
-      <h2>{{ fixture.league.name }}</h2>
-      
-      <div class="team">
-          <div class="team-name"><img src="{{ fixture.teams.home.logo }}" alt="" style="width: 20px; height: auto;">
-            {{ fixture.teams.home.name }}
-          </div>
-          <div class="team-score">{{ fixture.goals.home }}</div>
+<div class="scorecards-container">
+  {% for fixture in data.response %}
+  <div class="scorecard">
+    <div class="team team-home">
+      <div class="team-logo">
+        <img src="{{ fixture.teams.home.logo }}" alt="Home Team Logo" style="width: 30px; height: auto;">
       </div>
+      <div class="team-name">{% if fixture.teams.home.name %}{{ fixture.teams.home.name }}{% else %} ⚽ {% endif %}</div>
+      <div class="team-score">{% if fixture.goals.home != None %}{{ fixture.goals.home }}{% else %} ⚽ {% endif %}</div>
 
-      <div class="team">
-          <div class="team-name"><img src="{{ fixture.teams.away.logo }}" alt="" style="width: 20px; height: auto;">
-           {{ fixture.teams.away.name }}
-          </div>
-          <div class="team-score">{{ fixture.goals.away }}</div>
+    </div>
+
+    <div class="team team-away">
+      <div class="team-logo">
+        <img src="{{ fixture.teams.away.logo }}" alt="Away Team Logo" style="width: 30px; height: auto;">
       </div>
-      <div class="match-info">
-         <div class="match-status">{% if fixture.fixture.status.elapsed < 45 %} 
-            <strong>{{ fixture.fixture.status.elapsed }}'</strong>
-            {% elif fixture.fixture.status.short == "HT" %}
-            <strong>Half-Time</strong>
-            {% elif fixture.fixture.status.elapsed < 90 %} 
-            <strong>{{ fixture.fixture.status.elapsed }}'</strong>
+      <div class="team-name">{% if fixture.teams.away.name %}{{ fixture.teams.away.name }}{% else %} ⚽ {% endif %}</div>
+      <div class="team-score">{% if fixture.goals.away != None %}{{ fixture.goals.away }}{% else %} ⚽ {% endif %}</div>
+
+    </div>
+
+    <div class="match-info">
+      <div class="match-status">
+        {% if fixture.fixture.status.elapsed < 45 %} <strong>{{ fixture.fixture.status.elapsed }}'</strong>
+          {% elif fixture.fixture.status.short == "HT" %}
+          <strong>Half-Time</strong>
+          {% elif fixture.fixture.status.elapsed < 90 %} <strong>{{ fixture.fixture.status.elapsed }}'</strong>
             {% elif fixture.fixture.status.elapsed >= 90 %}
-            <strong>(Full-Time)</strong>
+            <strong>Full-Time</strong>
             {% else %}
-            <strong>(Upcoming)</strong>
-            {% endif %}</div>
-         </div>
-         <div class="match-date">{{ fixture.fixture.date }}</div>
+            <strong>Upcoming</strong>
+            {% endif %}
+      </div>
+    </div>
+    <div class="match-date">{{ fixture.fixture.date }}</div>
   </div>
-
-{% endfor %}
-
+  {% endfor %}
+</div>
 {% endblock %}

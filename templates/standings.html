@@ -4,28 +4,29 @@
 
 
 {% block content %}
-<h1>League Standings</h1>
+<h1 class="h1-standings">League Standings</h1>
 <table id="grid">
     <thead>
         <tr>
-            <th>Position</th>
+            <th width="50px" align="center">Position</th>
             <th>Logo</th>
             <th>Team</th>
             <th>Matches</th>
             <th>Points</th>
-            <th>Goals For</th>
-            <th>Goals Against</th>
-            <th>Goal Difference</th>
+            <th>GF</th>
+            <th>GA</th>
+            <th>GD</th>
             <th>Form</th>
             <th>Group</th>
         </tr>
     </thead>
+
     <tbody>
         {% for item in standings %}
         {% for league in item.league.standings %}
         {% for team in league %}
         <tr>
-            <td>{{ team.rank }}</td>
+            <td align="center">{{ team.rank }}</td>
             <td><img src="{{ team.team.logo }}" alt="{{ team.team.name }}" width="30"></td>
             <td>{{ team.team.name }}</td>
             <td>{{ team.all.played }}</td>
@@ -33,7 +34,7 @@
             <td>{{ team.all.goals.for }}</td>
             <td>{{ team.all.goals.against }}</td>
             <td>{{ team.goalsDiff }}</td>
-            <td>{{ team.form | default:"No form data available" }}</td>
+            <td>{{ team.form | default:"N.A." }}</td>
             {% if team.group %}
             <td>{{ team.group }}</td>
             {% endif %}

@@ -1,0 +1,376 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+:root {
+  --color-50: #eefaeb;
+  --color-100: #dbf3d4;
+  --color-200: #bae8ae;
+  --color-300: #8fd87e;
+  --color-400: #69c655;
+  --color-500: #4aab37;
+  --color-600: #378b29;
+  --color-700: #2b6823;
+  --color-800: #265420;
+  --color-900: #23481f;
+  --color-950: #0e270c;
+}
+
+
+* {
+  margin: 0%;
+  padding: 0%;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+}
+
+body {
+  /* background-color: #8ba487; */
+  background-color: var(--color-200);
+}
+
+/* navbar */
+
+.dic {
+  background-color: rgba(7, 7, 7, 0.868);
+  display: flex;
+  align-items: center;
+  position: sticky;
+  justify-content: space-between;
+}
+
+.dic ul {
+  display: flex;
+}
+
+.dic li {
+  list-style: none;
+  margin: 5px 5px 5px 5px;
+  font-size: 150%;
+}
+.dic li a {
+  display: block;
+  padding: 20px 30px;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+.icon {
+  width: 54px;
+  height: 64px;
+  margin-left: 20px;
+}
+
+/* home */
+
+#section {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 5px 10px;
+}
+
+.head {
+  color: #1f1d1d;
+  font-size: 5rem;
+}
+
+.img {
+  width: 20%;
+  margin-left: 100px;
+}
+
+
+
+/* home cards */
+
+.home-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  padding: 4rem;
+  justify-content: center;
+}
+
+.home {
+  background-color: var(--color-100);
+  width: 220px;
+  aspect-ratio: 4/5;
+  font-family: sans-serif;
+  text-decoration: none;
+  border-radius: 1.5rem ;
+  border: 1px solid var(--color-950);
+  box-shadow: var(--color-300) 0px 7px 29px 0px;
+
+
+ 
+}
+
+.h1 {
+  display: flex;
+  justify-content: center;
+  font-size: 3rem;
+  margin-top: 4rem;
+  color: var(--color-950);
+}
+
+
+.home-title {
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.home-front {
+  display: flex;
+  color: var(--color-950);
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  flex-direction: column-reverse; 
+  
+}
+
+.home-img {
+  width: 50%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  mix-blend-mode: darken;
+  margin-top: 1.5rem;
+}
+
+/* leagues */
+
+.heading {
+  display: flex;
+  justify-content: center;
+  font-size: 3rem;
+  margin-top: 4rem;
+  color: var(--color-950);
+}
+
+.lg {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem;
+  padding: 4rem;
+  justify-content: center;
+}
+
+.lg .flip-card {
+  width: 240px;
+  aspect-ratio: 3/4;
+  font-family: sans-serif;
+}
+
+.lg .title {
+  font-size: 1.5em;
+  font-weight: 900;
+  text-align: center;
+  margin: 0;
+}
+
+.lg .flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.lg .flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.lg .flip-card-front,
+.flip-card-back {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border: 1px solid var(--color-950);
+  border-radius: 1rem;
+  box-shadow: var(--color-300) 0px 7px 29px 0px;
+}
+
+.lg .flip-card-front {
+  background-color: var(--color-100);
+  color: var(--color-950);
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-direction: column-reverse;
+}
+
+.lg .flip-card-back {
+  background-color: var(--color-100);
+  color: var(--color-950);
+  transform: rotateY(180deg);
+  justify-content: center;
+  gap: 1rem;
+}
+
+.lg .flip-card-back a {
+  color: var(--color-950);
+  opacity: 0.75;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.lg .flip-card h2{
+  padding-bottom: 1rem;
+}
+
+.lg .leagues-images {
+  width: 50%;
+  aspect-ratio: 1;
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  mix-blend-mode: darken;
+}
+
+.lg .league-card-title {
+  padding: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  font-weight: 600;
+}
+.button{
+  display: block;
+  width: 30em;
+  margin: 0 auto;
+  font-weight: bold;
+  padding: 0.7em 2em;
+  border: 3px solid var(--color-950);
+  border-radius: 2rem;
+  text-decoration: none;
+
+}
+
+
+/* Standings */
+
+.h1-standings{
+  display: flex;
+  justify-content: center;
+  font-size: 3rem;
+  margin-top: 2rem;
+  color: var(--color-950);
+}
+
+#grid {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 50px 0px;
+  font-size: 1.1em;
+  text-align: left;
+  max-width:90%;
+  margin: 2rem auto ;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid var(--color-950);
+}
+
+#grid thead tr {
+  background-color: var(--color-400);
+  color: #000000;
+}
+
+#grid th,
+#grid td {
+  padding: 1rem 1rem;
+  border: 2px solid var(--color-500);
+}
+
+#grid tbody tr {
+  border-bottom: 1px solid #000000;
+  background-color: var(--color-100);
+}
+
+#grid tbody tr:nth-of-type(even) {
+  background-color: var(--color-100);
+}
+
+#grid tbody tr:last-of-type {
+  border-bottom: 1px solid #ffffff;
+}
+
+/* fixtures */
+.h1-fixture {
+  display: flex;
+  justify-content: center;
+  font-size: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: var(--color-950);
+}
+
+.scorecards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  justify-content: center;
+}
+
+.scorecard {
+  background-color: var(--color-100);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 310px;
+  box-sizing: border-box;
+  box-shadow: var(--color-300) 0px 7px 29px 0px;
+}
+
+
+.team {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.team-name {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.team-name img {
+  margin-right: 10px;
+}
+
+.team-score {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.match-info {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.match-status {
+  font-size: 1em;
+}
+
+.match-date {
+  text-align: center;
+  font-size: 0.9em;
+  color: #555;
+}
+
+
+/* footer */
+
+.foot {
+  background-color: bisque;
+  text-align: center;
+  margin-top: 28.4%;
+  position: sticky;
+}

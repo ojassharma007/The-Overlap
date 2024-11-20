@@ -14,7 +14,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "Football/wsgi.py"
+      "dest": "Football.asgi:application"
     }
   ]
 }

@@ -3,14 +3,24 @@
 {% block title %}Teams{% endblock title %}
 
 {% block content %}
-<h1>Teams</h1>
-    <div>
-        {% for item in data %}
-        <div class="tam">
-            <img src="{{ item.team.logo }}" alt="{{ item.team.name }} Logo" style="width: 30px;">
-            {{ item.team.name }}
-            <a href="/stats?team_id={{ item.team.id|urlencode }}" style="text-decoration: none;">{{ item.team.name }}</a>
+<!-- <style>
+body {
+    /* Use background color or image dynamically */
+    background-color: #cd3030;
+    
+    }
+</style> -->
+<h1 class="team-head">Teams</h1>
+<div class="list">
+    {% for item in data %}
+    <div class="lis">
+        <div class="list-1">
+            <img src="{{ item.team.logo }}" alt="{{ item.team.name }} Logo" class="team-img" style="width: 100px;">
+        {{ item.team.name }}
+        <a href="/stats?team_id={{ item.team.id|urlencode }}&league_id={{ league_id|urlencode }}"
+            style="text-decoration: none;">Statistics</a>
         </div>
-        {% endfor %}
     </div>
+    {% endfor %}
+</div>
 {% endblock %}

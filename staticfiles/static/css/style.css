@@ -30,7 +30,7 @@ body {
 /* navbar */
 
 .dic {
-  background-color: rgba(7, 7, 7, 0.868);
+  background-color: rgb(136, 10, 221);
   display: flex;
   align-items: center;
   position: sticky;
@@ -299,7 +299,7 @@ body {
   border-bottom: 1px solid #ffffff;
 }
 
-/* fixtures */
+/* Fixtures */
 .h1-fixture {
   display: flex;
   justify-content: center;
@@ -365,8 +365,17 @@ body {
   color: #555;
 }
 
+/* TEAMS */
+.team{
+  display: flex;
+  justify-content: center;
+  font-size: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: var(--color-950);
+}
 
-/* footer */
+/* Footer */
 
 .foot {
   background-color: bisque;

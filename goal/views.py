@@ -1,6 +1,6 @@
 import http.client
 import json
-from django.shortcuts import render
+from django.shortcuts import render # type: ignore
 from django.core.cache import cache
 from Football import config
 
@@ -80,6 +80,7 @@ def fixtures(request):
             print(f"Error: {res.status}")
         conn.close()
         cache.set(cache_key, data_json, timeout=86400)  # Cache for 24 hours
+        
 
     return render(request, "fixtures.html", {"data": data_json})
 
@@ -136,7 +137,7 @@ def teams(request):
         conn.close()
 
     teams_data = data_json.get("response", [])
-    return render(request, "teams.html", {"data": teams_data})
+    return render(request, "teams.html", {"data": teams_data, "league_id" : league_id})
 
 
 def all_leagues(request):
@@ -173,7 +174,7 @@ def stats(request):
     team_id = request.GET.get("team_id")
     league_id = request.GET.get("league_id")
     cache_key = f"stats_{team_id}_{league_id}"
-    data_json = None
+    data_json = cache.get(cache_key)
 
     if not data_json:
         conn = http.client.HTTPSConnection("v3.football.api-sports.io")
@@ -199,5 +200,4 @@ def stats(request):
         conn.close()
 
     stats_data = data_json.get("response", {})
-    print(data_json)
-    return render(request, "stats.html", {"teams_statistics": stats_data})
+    return render(request, "stats.html", {"stats": stats_data})

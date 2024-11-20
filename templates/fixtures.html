@@ -28,8 +28,9 @@
 
     <div class="match-info">
       <div class="match-status">
-        <strong>Date:</strong> {{ fixture.fixture.timestamp|date:"Y-m-d H:i:s" }}
-        {% if fixture.fixture.status.elapsed < 45 %} <strong>{{ fixture.fixture.status.elapsed }}'</strong>
+        <strong>Status:</strong> 
+        {% if fixture.fixture.status.elapsed < 45 %} 
+        <strong>{{ fixture.fixture.status.elapsed }}'</strong>
           {% elif fixture.fixture.status.short == "HT" %}
           <strong>Half-Time</strong>
           {% elif fixture.fixture.status.elapsed < 90 %} <strong>{{ fixture.fixture.status.elapsed }}'</strong>
@@ -37,10 +38,10 @@
             <strong>Full-Time</strong>
             {% else %}
             <strong>Upcoming</strong>
-            {% endif %}
+          {% endif %}
       </div>
     </div>
-    <div class="match-date">{{ fixture.fixture.date }}</div>
+    <!-- <div class="match-date">{{ fixture.fixture.date }}</div> -->
   </div>
   {% endfor %}
 </div>

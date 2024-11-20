@@ -5,19 +5,62 @@
 {% block content %}
 <h1>Team Statistics</h1>
 
-    <div>
-        <h2>{{ teams_statistics.team.name }}</h2>
-        <img src="{{ teams_statistics.team.logo }}" alt="{{ teams_statistics.team.name }} Logo">
-        
-        <h4>Fixtures Played</h4>
-        <p>Home: {{ teams_statistics.fixtures.played.home }}</p>
-        <p>Away: {{ teams_statistics.fixtures.played.away }}</p>
-        <p>Total: {{ teams_statistics.fixtures.played.total }}</p>
+<div>
+    <img src="{{ stats.team.logo }}" alt="{{ stats.team.name }}" width="100">
+    <h2>{{ stats.league.name }} ({{ stats.league.season }})</h2>
+</div>
 
-        <h4>Wins</h4>
-        <p>Home: {{ teams_statistics.fixtures.wins.home }}</p>
-        <p>Away: {{ teams_statistics.fixtures.wins.away }}</p>
-        <p>Total: {{ teams_statistics.fixtures.wins.total }}</p>
+<!-- Fixtures Information -->
+<h3>Fixtures Played</h3>
+<ul>
+    <li>Home: {{ stats.fixtures.played.home }}</li>
+    <li>Away: {{ stats.fixtures.played.away }}</li>
+    <li>Total: {{ stats.fixtures.played.total }}</li>
+</ul>
 
-    </div>
+<!-- Wins, Draws, and Losses -->
+<h3>Results</h3>
+<ul>
+    <li>Wins: Home - {{ stats.fixtures.wins.home }}, Away - {{ stats.fixtures.wins.away }}, Total - {{ stats.fixtures.wins.total }}</li>
+    <li>Draws: Home - {{ stats.fixtures.draws.home }}, Away - {{ stats.fixtures.draws.away }}, Total - {{ stats.fixtures.draws.total }}</li>
+    <li>Losses: Home - {{ stats.fixtures.loses.home }}, Away - {{ stats.fixtures.loses.away }}, Total - {{ stats.fixtures.loses.total }}</li>
+</ul>
+
+<!-- Goals For and Against -->
+<h3>Goals</h3>
+<ul>
+    <li>Goals For: Home - {{ stats.goals.for.total.home }}, Away - {{ stats.goals.for.total.away }}, Total - {{ stats.goals.for.total.total }}</li>
+    <li>Goals Against: Home - {{ stats.goals.against.total.home }}, Away - {{ stats.goals.against.total.away }}, Total - {{ stats.goals.against.total.total }}</li>
+</ul>
+
+<!-- Biggest Wins and Losses -->
+<h3>Biggest Wins & Losses</h3>
+<ul>
+    <li>Biggest Home Win: {{ stats.biggest.wins.home }}</li>
+    <li>Biggest Away Win: {{ stats.biggest.wins.away }}</li>
+    <li>Biggest Home Loss: {{ stats.biggest.loses.home }}</li>
+    <li>Biggest Away Loss: {{ stats.biggest.loses.away }}</li>
+</ul>
+
+<!-- Clean Sheets and Failed to Score -->
+<h3>Clean Sheets & Failed to Score</h3>
+<ul>
+    <li>Clean Sheets: Home - {{ stats.clean_sheet.home }}, Away - {{ stats.clean_sheet.away }}, Total - {{ stats.clean_sheet.total }}</li>
+    <li>Failed to Score: Home - {{ stats.failed_to_score.home }}, Away - {{ stats.failed_to_score.away }}, Total - {{ stats.failed_to_score.total }}</li>
+</ul>
+
+<!-- Team Form -->
+<h3>Team Form</h3>
+<p>{{ stats.form }}</p>
+
+<!-- Lineups -->
+<h3>Common Lineups</h3>
+<ul>
+    {% for lineup in stats.lineups %}
+        <li>Formation: {{ lineup.formation }} (Played: {{ lineup.played }})</li>
+    {% endfor %}
+</ul>
+
+
+
 {% endblock %}

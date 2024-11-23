@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 
-{% block title %}Fixtures{% endblock title %}
+{% block title %}Leagues{% endblock title %}
 
 {% block content %}
-<h1 class="h1-fixture">Fixtures ⚽</h1>
+
+<h1 class="h1-fixture">Live📢Fixtures</h1>
 
 <div class="scorecards-container">
-  {% for fixture in data.response %}
+  {% for fixture in fixtures %}
   <div class="scorecard">
     <div class="team team-home">
       <div class="team-logo">
@@ -36,13 +37,13 @@
           {% elif fixture.fixture.status.elapsed < 90 %} <strong>{{ fixture.fixture.status.elapsed }}'</strong>
             {% elif fixture.fixture.status.elapsed >= 90 %}
             <strong>Full-Time</strong>
-            {% else %}
-            <strong>Upcoming</strong>
           {% endif %}
       </div>
     </div>
-    <!-- <div class="match-date">{{ fixture.fixture.date }}</div> -->
+    <div class="match-date">{{ fixture.fixture.date }}</div>
   </div>
   {% endfor %}
 </div>
+
+
 {% endblock %}

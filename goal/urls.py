@@ -9,6 +9,8 @@ urlpatterns = [
     path('standings/', views.standings, name='standings'),
     path('teams/', views.teams, name='teams'),
     path('stats/', views.stats, name='stats'),
+    path('live_fixtures/', views.live_fixtures, name='live_fixtures'),
+    
 
 
     path("__reload__/", include("django_browser_reload.urls")),

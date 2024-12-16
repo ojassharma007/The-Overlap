@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 
 {% block title %}Leagues{% endblock title %}
+    
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/leagues.css' %}">
+{% endblock %}
+
 
 {% block content %}
 <h1 class="heading">Leagues 🏆</h1>

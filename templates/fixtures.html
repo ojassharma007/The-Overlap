@@ -2,12 +2,16 @@
 
 {% block title %}Fixtures{% endblock title %}
 
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/fixtures.css' %}">
+{% endblock %}
+
 {% block content %}
 <h1 class="h1-fixture">Fixtures ⚽</h1>
-
 <div class="scorecards-container">
   {% for fixture in data.response %}
-  <div class="scorecard">
+  <a class="scorecard" href="/fixture_details?id={{fixture.fixture.id|urlencode}}">
     <div class="team team-home">
       <div class="team-logo">
         <img src="{{ fixture.teams.home.logo }}" alt="🏠" style="width: 30px; height: auto;">
@@ -28,7 +32,7 @@
 
     <div class="match-info">
       <div class="match-status">
-        <strong>Status(⌚):</strong> 
+        <strong>Status(🕛):</strong> 
         {% if fixture.fixture.status.elapsed < 45 %} 
         <strong>{{ fixture.fixture.status.elapsed }}'</strong>
           {% elif fixture.fixture.status.short == "HT" %}
@@ -41,8 +45,8 @@
           {% endif %}
       </div>
     </div>
-    <!-- <div class="match-date">{{ fixture.fixture.date }}</div> -->
-  </div>
+    <div class="match-date">{{ fixture.fixture.date }}</div>
+  </a>
   {% endfor %}
 </div>
 {% endblock %}

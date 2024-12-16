@@ -69,7 +69,6 @@ def fixtures(request):
 
     return render(request, "fixtures.html", {"data": data_json})
 
-
 def standings(request):
     standings_id = request.GET.get("id")
     cache_key = f"standings_{standings_id}"
@@ -154,7 +153,6 @@ def all_leagues(request):
     # Passing the leagues data to the template
     return render(request, "alleagues.html", {"leagues": leagues_data})
 
-
 def stats(request):
     team_id = request.GET.get("team_id")
     league_id = request.GET.get("league_id")
@@ -201,3 +199,60 @@ def live_fixtures(request):
     fixtures_data = data_json.get('response', [])
     
     return render(request, 'live_fixtures.html', {'fixtures': fixtures_data})
+
+
+def players(request):
+    team_id = request.GET.get("team_id")
+    cache_key = f"team_squad_{team_id}"
+    data_json = cache.get(cache_key)
+
+    if not data_json:
+        conn = http.client.HTTPSConnection("v3.football.api-sports.io")
+        headers = {
+            "x-rapidapi-host": "v3.football.api-sports.io",
+            "x-rapidapi-key": config.API_KEY,
+        }
+        conn.request("GET", f"/players/squads?team={team_id}", headers=headers)
+        res = conn.getresponse()
+        if res.status == 200:
+            data = res.read()
+            data_json = json.loads(data.decode("utf-8"))
+            cache.set(cache_key, data_json, timeout=86400)
+        else:
+            print(f"Error: {res.status}")
+            data_json = {"response": []}
+        conn.close()
+
+    team_data = data_json.get("response", [])[0]
+    return render(request, "players.html", {"team_data": team_data})
+
+def fixture_details(request):
+    fixture_id = request.GET.get("id")
+
+
+    data_json = {}
+
+    conn = http.client.HTTPSConnection("v3.football.api-sports.io")
+    headers = {
+        "x-rapidapi-host": "v3.football.api-sports.io",
+        "x-rapidapi-key": config.API_KEY,
+    }
+    conn.request("GET", f"/fixtures/?id={fixture_id}", headers=headers)
+    res = conn.getresponse()
+
+    res.status == 200
+    data = res.read()
+    data_json = json.loads(data.decode("utf-8"))
+
+    fixture_data = data_json.get("response", [])
+    return render(request, "fixture_details.html", {"fixture": fixture_data})
+
+
+def lineup(request):
+    return render(request, "lineup.html")
+
+def events(request):
+    return render(request, "events.html")
+
+def fixture_stats(request):
+    return render(request, "fixture_stats.html")

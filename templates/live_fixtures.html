@@ -2,6 +2,11 @@
 
 {% block title %}Leagues{% endblock title %}
 
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/fixtures.css' %}">
+{% endblock %}
+
 {% block content %}
 
 <h1 class="h1-fixture">Live📢Fixtures</h1>
@@ -29,7 +34,7 @@
 
     <div class="match-info">
       <div class="match-status">
-        <strong>Status(⌚):</strong> 
+        <strong>Status(🕛):</strong> 
         {% if fixture.fixture.status.elapsed < 45 %} 
         <strong>{{ fixture.fixture.status.elapsed }}'</strong>
           {% elif fixture.fixture.status.short == "HT" %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Fixture Details{% endblock title %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/fixtures.css' %}">
+{% endblock %}
+
+{% block content %}
+<h1 class="h1-fixture">Fixtures Details ⚽</h1>
+<div class="scorecards-container">
+    <div class="scorecard">
+        <div class="team team-home">
+        <div class="team-logo">
+            <img src="{{ fixture.teams.home.logo }}" alt="🏠" style="width: 30px; height: auto;">
+        </div>
+        <div class="team-name">{% if fixture.teams.home.name %}{{ fixture.teams.home.name }}{% else %} ⚽ {% endif %}</div>
+        <div class="team-score">{% if fixture.goals.home != None %}{{ fixture.goals.home }}{% else %} ⚽ {% endif %}</div>
+
+        </div>
+
+        <div class="team team-away">
+        <div class="team-logo">
+            <img src="{{ fixture.teams.away.logo }}" alt="✈️" style="width: 30px; height: auto;">
+        </div>
+        <div class="team-name">{% if fixture.teams.away.name %}{{ fixture.teams.away.name }}{% else %} ⚽ {% endif %}</div>
+        <div class="team-score">{% if fixture.goals.away != None %}{{ fixture.goals.away }}{% else %} ⚽ {% endif %}</div>
+
+        </div>
+    </div>
+</div>
+
+{% include 'lineup.html' %}
+{% include 'events.html' %}
+{% include 'fixture_stats.html' %}
+
+{% endblock %}

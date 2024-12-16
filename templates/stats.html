@@ -1,100 +1,108 @@
 {% extends 'base.html' %}
 
+
 {% block title %}Team Statistics{% endblock %}
+
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/stats.css' %}">
+{% endblock %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
 
 {% block content %}
 <h1 class="st-head">Team Statistics 📝</h1>
 <div class="st">
-
-        <!-- Team Header Section -->
-        <div class="team-header card">
-            <img src="{{ stats.team.logo }}" alt="Team Logo" class="st-logo">
-            <h2 class="st-name">{{ stats.team.name }}</h2>
-            <h3 class="st-info">{{ stats.league.name }} ({{ stats.league.season }})</h3>
-        </div>
-        
-        <!-- Fixtures Information -->
-        <div class="st-card">
-            <h2 class="card-title">Fixtures Played</h2>
-            <ul class="st-data">
-                <li>Home: {{ stats.fixtures.played.home }}</li>
-                <li>Away: {{ stats.fixtures.played.away }}</li>
-                <li>Total: {{ stats.fixtures.played.total }}</li>
-            </ul>
-        </div>
-        
-        <!-- Results -->
-        <div class="st-card">
-            <h2 class="card-title">Results</h2>
-            <ul class="st-data">
-                <li> 
-                    Wins
-                    Home - {{ stats.fixtures.wins.home }}
-                    Away - {{ stats.fixtures.wins.away }}
-                    Total - {{ stats.fixtures.wins.total }}
-                </li>
-                <li>Draws
-                    Home - {{ stats.fixtures.draws.home }}
-                    Away - {{ stats.fixtures.draws.away }}
-                    Total - {{ stats.fixtures.draws.total }}
-
-                </li>
-                <li>
-                    Losses
-                    Home - {{ stats.fixtures.loses.home }}
-                    Away - {{ stats.fixtures.loses.away }}
-                    Total - {{ stats.fixtures.loses.total }}
-                </li>
-            </ul>
-        </div>
     
-        <!-- Goals -->
-        <div class="st-card">
-            <h2 class="card-title">Goals</h2>
-            <ul class="st-data">
-                <li>Goals For: Home - {{ stats.goals.for.total.home }}, Away - {{ stats.goals.for.total.away }}, Total - {{ stats.goals.for.total.total }}</li>
-                <li>Goals Against: Home - {{ stats.goals.against.total.home }}, Away - {{ stats.goals.against.total.away }}, Total - {{ stats.goals.against.total.total }}</li>
-            </ul>
-        </div>
-    
-        <!-- Biggest Wins and Losses -->
-        <div class="st-card">
-            <h2 class="card-title">Biggest Wins & Losses</h2>
-            <ul class="st-data">
-                <li>Biggest Home Win: {{ stats.biggest.wins.home }}</li>
-                <li>Biggest Away Win: {{ stats.biggest.wins.away }}</li>
-                <li>Biggest Home Loss: {{ stats.biggest.loses.home }}</li>
-                <li>Biggest Away Loss: {{ stats.biggest.loses.away }}</li>
-            </ul>
-        </div>
-    
-        <!-- Clean Sheets and Failed to Score -->
-        <div class="st-card">
-            <h2 class="card-title">Clean Sheets & Failed to Score</h2>
-            <ul class="st-data">
-                <li>Clean Sheets: Home - {{ stats.clean_sheet.home }}, Away - {{ stats.clean_sheet.away }}, Total - {{ stats.clean_sheet.total }}</li>
-                <li>Failed to Score: Home - {{ stats.failed_to_score.home }}, Away - {{ stats.failed_to_score.away }}, Total - {{ stats.failed_to_score.total }}</li>
-            </ul>
-        </div>
-    
-        <!-- Team Form -->
+    <!-- Team Header Section -->
+    <div class="team-header">
+        <img src="{{ stats.team.logo }}" alt="Team Logo" class="st-logo" draggable="false">
+        <h2 class="st-name">{{ stats.team.name }}</h2>
+        <h3 class="st-info">{{ stats.league.name }} ({{ stats.league.season }})</h3>
+    </div>
+    <div class="xyz">
         <div class="st-card">
             <h2 class="card-title">Team Form</h2>
-            <p class="team-form">{{ stats.form }}</p>
+            <p class="team-form">
+                {{ stats.form }}
+            </p>
+        
         </div>
+    </div>
+
+        <div class="container">
+            <!-- Fixtures and Goals -->
+                <div class="st-card">
+                    <h2 class="card-title">Fixtures Played</h2>
+                    <ul class="st-data">
+                        <li><i class="fas fa-home"></i> Home: <span class="badge">{{ stats.fixtures.played.home }}</span></li>
+                        <li><i class="fas fa-plane"></i> Away: <span class="badge">{{ stats.fixtures.played.away }}</span></li>
+                        <li><i class="fas fa-list-alt"></i> Total: <span class="badge badge-total">{{ stats.fixtures.played.total }}</span></li>
+                    </ul>
+                </div>
+                <div class="st-card">
+                    <h2 class="card-title">Goals</h2>
+                    <ul class="st-data">
+                        <li><i class="fas fa-futbol"></i> Goals For: <span class="badge">{{ stats.goals.for.total.total }}</span> (Home: {{ stats.goals.for.total.home }}, Away:{{ stats.goals.for.total.away }})</li>
+                        <li><i class="fas fa-shield-alt"></i> Goals Against: <span class="badge">{{ stats.goals.against.total.total }}</span> (Home: {{ stats.goals.against.total.home }}, Away: {{ stats.goals.against.total.away }})</li>
+                    </ul>
+                </div>
     
-        <!-- Lineups -->
-        <div class="st-card">
-            <h2 class="card-title">Common Lineups</h2>
-            <ul class="st-data">
-                {% for lineup in stats.lineups %}
-                <li>Formation: {{ lineup.formation }} (Played: {{ lineup.played }})</li>
-                {% endfor %}
-            </ul>
+            <!-- Results -->
+            <div class="st-card results">
+                <h2 class="card-title">Results</h2>
+                <ul class="st-data">
+                    <li><i class="fas fa-trophy"></i> Wins: <span class="badge badge-win">{{ stats.fixtures.wins.total }}</span> (Home:{{ stats.fixtures.wins.home }}, Away: {{ stats.fixtures.wins.away }})</li>
+                    <li><i class="fas fa-handshake"></i> Draws: <span class="badge badge-draw">{{ stats.fixtures.draws.total }}</span> (Home: {{ stats.fixtures.draws.home }}, Away: {{ stats.fixtures.draws.away }})</li>
+                    <li><i class="fas fa-times-circle"></i> Losses: <span class="badge badge-loss">{{ stats.fixtures.loses.total }}</span> (Home: {{ stats.fixtures.loses.home }}, Away: {{ stats.fixtures.loses.away }})</li>
+                </ul>
+            </div>
+    
+            <!-- Biggest Wins and Losses -->
+            
+                <div class="st-card half">
+                    <h2 class="card-title">Biggest Wins</h2>
+                    <ul class="st-data">
+                        <li><i class="fas fa-home"></i> Home: <span class="highlight">{{ stats.biggest.wins.home }}</span></li>
+                        <li><i class="fas fa-plane"></i> Away: <span class="highlight">{{ stats.biggest.wins.away }}</span></li>
+                    </ul>
+                </div>
+                <div class="st-card half">
+                    <h2 class="card-title">Biggest Losses</h2>
+                    <ul class="st-data">
+                        <li><i class="fas fa-home"></i> Home: <span class="highlight">{{ stats.biggest.loses.home }}</span></li>
+                        <li><i class="fas fa-plane"></i> Away: <span class="highlight">{{ stats.biggest.loses.away }}</span></li>
+                    </ul>
+                </div>
+        
+    
+            <!-- Clean Sheets -->
+            <div class="st-card">
+                <h2 class="card-title">Clean Sheets</h2>
+                <ul class="st-data">
+                    <li><i class="fas fa-home"></i> Home: <span class="badge badge-clean">{{ stats.clean_sheet.home }}</span></li>
+                    <li><i class="fas fa-plane"></i> Away: <span class="badge badge-clean">{{ stats.clean_sheet.away }}</span></li>
+                    <li><i class="fas fa-clipboard"></i> Total: <span class="badge badge-clean">{{ stats.clean_sheet.total }}</span></li>
+                </ul>
+            </div>
+            
+            <div class="st-card">
+                <h2 class="card-title">Common Lineups</h2>
+                <ul class="st-data">
+                    {% for lineup in stats.lineups %}
+                    <li>
+                        <i class="fas fa-chess-board"></i> 
+                        Formation: <span class="badge badge-formation">{{ lineup.formation }}</span> 
+                        (Played:<span class="badge">{{ lineup.played }}</span>)
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
         </div>
     
 
 </div>
-
 
 {% endblock %}

@@ -1,0 +1,52 @@
+/* Player */
+
+.player-head {
+  display: flex;
+  justify-content: center;
+  font-size: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: #ffffff;
+}
+
+.team-logo {
+  display: flex;
+  padding-left: 6rem;
+  justify-content: left;
+  align-items: center;
+  color: #ffffff;
+  font-size: 50px;
+  font-weight: 300;
+  gap: 2rem;
+}
+
+.players {
+  display: grid;
+  grid-template-columns: repeat(4, 300px);
+  justify-content: center;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.pl-img {
+  margin: 10px;
+  padding: 5px;
+  border: 1px solid #146d47;
+  border-radius: 40%;
+  width: 3rem;
+  
+}
+
+.pl-data {
+  display: flex;
+  align-items: center;
+  border: 3px solid #146d47;
+  border-radius: 10px;
+  background-color: white;
+  transition: transform 0.3s ease;
+}
+
+.pl-data:hover {
+  transform: translateY(-8px);
+}
+

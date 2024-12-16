@@ -1,0 +1,65 @@
+/* Fixtures */
+
+.h1-fixture {
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    color: #ffffff;
+}
+  
+.scorecards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+}
+  
+.scorecard {
+    background-color: rgba(255, 255, 255, 0.971);
+    border-radius: 10px;
+    padding: 20px;
+    width: 310px;
+    box-sizing: border-box;
+    border: 5px solid #146d47;
+    box-shadow: #ebe4e45e 10px 7px 9px 0px;
+}
+  
+.team {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+  
+  .team-name {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+  
+  .team-name img {
+    margin-right: 10px;
+  }
+  
+  .team-score {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .match-info {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .match-status {
+    font-size: 1em;
+  }
+  
+  .match-date {
+    text-align: center;
+    font-size: 0.9em;
+    color: #555;
+  }

@@ -4,6 +4,8 @@ from django.shortcuts import render # type: ignore
 from django.core.cache import cache
 from Football import config
 from collections import defaultdict
+from datetime import datetime
+import pytz  # For timezone handling
 
 
 def index(request):
@@ -228,23 +230,46 @@ def players(request):
 
 def fixture_details(request):
     fixture_id = request.GET.get("id")
+    cache_key = f"fixtures_{fixture_id}"
 
+    # Check if data is already cached
+    data_json = cache.get(cache_key)
+    if data_json:
+        # If data is cached, retrieve it
+        fixture_data = data_json.get("response", [])[0]  # Fetch the first response
+    else:
+        # If not cached, fetch from API
+        conn = http.client.HTTPSConnection("v3.football.api-sports.io")
+        headers = {
+            "x-rapidapi-host": "v3.football.api-sports.io",
+            "x-rapidapi-key": config.API_KEY,
+        }
+        conn.request("GET", f"/fixtures/?id={fixture_id}", headers=headers)
+        res = conn.getresponse()
 
-    data_json = {}
+        if res.status == 200:
+            data = res.read()
+            data_json = json.loads(data.decode("utf-8"))
+            fixture_data = data_json.get("response", [])[0]  # Fetch first response
 
-    conn = http.client.HTTPSConnection("v3.football.api-sports.io")
-    headers = {
-        "x-rapidapi-host": "v3.football.api-sports.io",
-        "x-rapidapi-key": config.API_KEY,
-    }
-    conn.request("GET", f"/fixtures/?id={fixture_id}", headers=headers)
-    res = conn.getresponse()
+            # Cache the fetched data for 24 hours (86400 seconds)
+            cache.set(cache_key, data_json, timeout=86400)
+        else:
+            fixture_data = None
 
-    res.status == 200
-    data = res.read()
-    data_json = json.loads(data.decode("utf-8"))
+        conn.close()
+        
+    try:
+        iso_date = fixture_data["fixture"]["date"]
+        datetime_obj = datetime.fromisoformat(iso_date)
+        ist_timezone = pytz.timezone("Asia/Kolkata")
+        datetime_ist = datetime_obj.astimezone(ist_timezone)
+        formatted_date = datetime_ist.strftime("%a, %B %d, %I:%M %p").lstrip("0")
+        fixture_data["fixture"]["formatted_date"] = formatted_date
+    except ValueError as e:
+        print(f"Error parsing date: {e}")
+        fixture_data["fixture"]["formatted_date"] = "Invalid date format"
 
-    fixture_data = data_json.get("response", [])
     return render(request, "fixture_details.html", {"fixture": fixture_data})
 
 

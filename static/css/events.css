@@ -1,0 +1,110 @@
+/* Container for the events */
+.events {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Styling */
+h2 {
+    font-size: 38px;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+/* Styling for team event containers */
+.team-events {
+    margin-bottom: 40px;
+}
+
+/* Team name section */
+.team-events h3 {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #444;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* List styling */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Individual event items */
+.event-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s;
+}
+
+.event-item:hover {
+    background-color: #f9f9f9;
+}
+
+/* Event time styling */
+.event-time {
+    font-size: 1rem;
+    color: #777;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+/* Team logo styling */
+.team-logo {
+    width: 40px;
+    height: auto;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+/* Event description styling */
+.event-description {
+    font-size: 1rem;
+    color: #555;
+    flex: 1;
+}
+
+/* Styling for event types like Goal, Card, etc. */
+.goal {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.yellow-card {
+    color: #ffc107;
+    font-weight: bold;
+}
+
+.red-card {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.substitution {
+    color: #17a2b8;
+    font-weight: bold;
+}
+
+/* Optional Comments section */
+.comments {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Adding a margin at the bottom of event list items */
+.event-item:last-child {
+    border-bottom: none;
+}

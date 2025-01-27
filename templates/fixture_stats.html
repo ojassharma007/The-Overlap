@@ -1,5 +1,36 @@
 {% block content %}
 <div>
-    <h1>fix</h1>
+    <h1>Match Stats</h1>
 </div>
+
+<div class="statistics">
+    <h2>Match Statistics</h2>
+    <div class="team-statistics">
+      {% for team_stat in fixture.statistics %}
+        <div class="team">
+          <h3>
+            <img src="{{ team_stat.team.logo }}" alt="{{ team_stat.team.name }}" width="50">
+            {{ team_stat.team.name }}
+          </h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Statistic</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for stat in team_stat.statistics %}
+                <tr>
+                  <td>{{ stat.type }}</td>
+                  <td>{{ stat.value }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  
 {% endblock %}

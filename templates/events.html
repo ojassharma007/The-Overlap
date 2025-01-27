@@ -1,5 +1,68 @@
 {% block content %}
-<div>
-    <h1>h</h1>
+<h2>Match Events</h2>
+<div class="events">
+    <div class="team-events">
+        <h3>{{ fixture.teams.home.name }} Events</h3>
+        <ul>
+          {% for event in fixture.events %}
+            {% if event.team.id == fixture.teams.home.id %}
+              <li class="event-item">
+                <span class="event-time">Time: {{ event.time.elapsed }}</span>
+                <img class="team-logo" src="{{ event.team.logo }}" alt="{{ event.team.name }}" width="30">
+                <div class="event-description">
+                  
+                  <strong>Player:</strong> {{ event.player.name }}
+                  <br>
+                  {% if event.assist.name %}
+                    <strong>Assist:</strong> {{ event.assist.name }}
+                    <br>
+                  {% endif %}
+                  <strong class='types'>
+                    Type: {{ event.type }}
+                  </strong>
+                  <br>
+                  <strong>Detail:</strong> {{ event.detail }}
+                  <br>
+                  {% if event.comments %}
+                    <strong>Comments:</strong> {{ event.comments }}
+                  {% endif %}
+                </div>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+    </div>
+
+    <div class="team-events">
+        <h3>{{ fixture.teams.away.name }} Events</h3>
+        <ul>
+          {% for event in fixture.events %}
+            {% if event.team.id == fixture.teams.away.id %}
+              <li class="event-item">
+                <span class="event-time">Time: {{ event.time.elapsed }}</span>
+                <img class="team-logo" src="{{ event.team.logo }}" alt="{{ event.team.name }}" width="30">
+                <div class="event-description">
+                  
+                  <strong>Player:</strong> {{ event.player.name }}
+                  <br>
+                  {% if event.assist.name %}
+                    <strong>Assist:</strong> {{ event.assist.name }}
+                    <br>
+                  {% endif %}
+                  <strong class='types'>
+                    Type: {{ event.type }}
+                  </strong>
+                  <br>
+                  <strong>Detail:</strong> {{ event.detail }}
+                  <br>
+                  {% if event.comments %}
+                    <strong>Comments:</strong> {{ event.comments }}
+                  {% endif %}
+                </div>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+    </div>
 </div>
 {% endblock %}

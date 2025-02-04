@@ -1,36 +1,45 @@
 {% block content %}
-<div>
-    <h1>Match Stats</h1>
-</div>
+<h2>Match Statistics</h2>
 
-<div class="statistics">
-    <h2>Match Statistics</h2>
-    <div class="team-statistics">
-      {% for team_stat in fixture.statistics %}
-        <div class="team">
-          <h3>
-            <img src="{{ team_stat.team.logo }}" alt="{{ team_stat.team.name }}" width="50">
-            {{ team_stat.team.name }}
-          </h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Statistic</th>
-                <th>Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for stat in team_stat.statistics %}
-                <tr>
-                  <td>{{ stat.type }}</td>
-                  <td>{{ stat.value }}</td>
-                </tr>
-              {% endfor %}
-            </tbody>
-          </table>
+
+<div class="stats-container">
+    <div class="stats-card">
+        <div class="team-header">
+            <div class="team">
+                <img src="{{ fixture.statistics.0.team.logo }}" alt="{{ fixture.statistics.0.team.name }}">
+                <span>{{ fixture.statistics.0.team.name }}</span>
+            </div>
+            <span class="vs">VS</span>
+            <div class="team">
+                <span>{{ fixture.statistics.1.team.name }}</span>
+                <img src="{{ fixture.statistics.1.team.logo }}" alt="{{ fixture.statistics.1.team.name }}">
+            </div>
         </div>
-      {% endfor %}
+
+        <div class="team-statistics">
+            <table>
+                <thead>
+                    <tr>
+                        <th>{{ fixture.statistics.0.team.name }}</th>
+                        <th>Statistics</th>
+                        <th>{{ fixture.statistics.1.team.name }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for home_stat in fixture.statistics.0.statistics %}
+                        {% for away_stat in fixture.statistics.1.statistics %}
+                            {% if home_stat.type == away_stat.type %}
+                                <tr>
+                                    <td>{{ home_stat.value }}</td>
+                                    <td>{{ home_stat.type }}</td>
+                                    <td>{{ away_stat.value }}</td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
-  </div>
-  
+</div>
 {% endblock %}

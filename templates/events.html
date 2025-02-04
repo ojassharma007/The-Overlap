@@ -1,68 +1,94 @@
 {% block content %}
 <h2>Match Events</h2>
-<div class="events">
-    <div class="team-events">
-        <h3>{{ fixture.teams.home.name }} Events</h3>
-        <ul>
-          {% for event in fixture.events %}
-            {% if event.team.id == fixture.teams.home.id %}
-              <li class="event-item">
-                <span class="event-time">Time: {{ event.time.elapsed }}</span>
-                <img class="team-logo" src="{{ event.team.logo }}" alt="{{ event.team.name }}" width="30">
-                <div class="event-description">
-                  
-                  <strong>Player:</strong> {{ event.player.name }}
-                  <br>
-                  {% if event.assist.name %}
-                    <strong>Assist:</strong> {{ event.assist.name }}
-                    <br>
-                  {% endif %}
-                  <strong class='types'>
-                    Type: {{ event.type }}
-                  </strong>
-                  <br>
-                  <strong>Detail:</strong> {{ event.detail }}
-                  <br>
-                  {% if event.comments %}
-                    <strong>Comments:</strong> {{ event.comments }}
-                  {% endif %}
-                </div>
-              </li>
-            {% endif %}
-          {% endfor %}
-        </ul>
-    </div>
+<div class="event-grid">
+  <div class="home-events">
+      <div class="team-events">
+          <h3>{{ fixture.teams.home.name }}</h3>
+          <ul class="events-grid">
+            {% for event in fixture.events %}
+              {% if event.team.id == fixture.teams.home.id %}
+                <li class="event-item">
+                  <span class="event-time">
+                    {% if event.time.extra %}
+                      {{ event.time.elapsed }}+{{ event.time.extra }}'
+                    {% else %}
+                      {{ event.time.elapsed }}'
+                    {% endif %}
+                  </span>
 
-    <div class="team-events">
-        <h3>{{ fixture.teams.away.name }} Events</h3>
-        <ul>
-          {% for event in fixture.events %}
-            {% if event.team.id == fixture.teams.away.id %}
-              <li class="event-item">
-                <span class="event-time">Time: {{ event.time.elapsed }}</span>
-                <img class="team-logo" src="{{ event.team.logo }}" alt="{{ event.team.name }}" width="30">
-                <div class="event-description">
-                  
-                  <strong>Player:</strong> {{ event.player.name }}
-                  <br>
-                  {% if event.assist.name %}
-                    <strong>Assist:</strong> {{ event.assist.name }}
+                  <div class="event-description">
+                    {% if event.type == "Goal" %}
+                        <strong class="st">Scorer:</strong> {{ event.player.name }}
+                        <br>
+                        {% if event.assist %}
+                            <strong class="st">Assist:</strong> {{ event.assist.name }}
+                        {% endif %}
+                    {% elif event.type == "subst" %}
+                        <strong class="in-event">In:</strong> {{ event.player.name }}
+                        <br>
+                        <strong class="out-event">Out:</strong> {{ event.assist.name }}
+                    {% else %}
+                        <strong class="st">Player:</strong> {{ event.player.name }}
+                    {% endif %}
                     <br>
-                  {% endif %}
-                  <strong class='types'>
-                    Type: {{ event.type }}
-                  </strong>
-                  <br>
-                  <strong>Detail:</strong> {{ event.detail }}
-                  <br>
-                  {% if event.comments %}
-                    <strong>Comments:</strong> {{ event.comments }}
-                  {% endif %}
+                    <strong class="st">Type:</strong> {{ event.type }}
+                    <br>
+                    <strong class="st">Detail:</strong> {{ event.detail }}
+                  
+                    {% if event.comments %}
+                      ({{ event.comments }})
+                    {% endif %}
                 </div>
-              </li>
-            {% endif %}
-          {% endfor %}
-        </ul>
-    </div>
+                
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+      </div>
+  </div>
+  <div class="away-events">
+      <div class="team-events">
+          <h3>{{ fixture.teams.away.name }}</h3>
+          <ul class="events-grid">
+            {% for event in fixture.events %}
+              {% if event.team.id == fixture.teams.away.id %}
+                <li class="event-item">
+                  <span class="event-time">
+                    {% if event.time.extra %}
+                      {{ event.time.elapsed }}+{{ event.time.extra }}'
+                    {% else %}
+                      {{ event.time.elapsed }}'
+                    {% endif %}
+                  </span>
+
+                  <div class="event-description">
+                    {% if event.type == "Goal" %}
+                        <strong class="st">Scorer:</strong> {{ event.player.name }}
+                        <br>
+                        {% if event.assist %}
+                            <strong class="st">Assist:</strong> {{ event.assist.name }}
+                        {% endif %}
+                    {% elif event.type == "subst" %}
+                        <strong class="in-event">In:</strong> {{ event.player.name }}
+                        <br>
+                        <strong class="out-event">Out:</strong> {{ event.assist.name }}
+                    {% else %}
+                        <strong class="st">Player:</strong> {{ event.player.name }}
+                    {% endif %}
+                    <br>
+                    <strong class="st">Type: </strong>{{ event.type }}
+                    <br>
+                    <strong class="st">Detail:</strong> {{ event.detail }}
+                  
+                    {% if event.comments %}
+                      ({{ event.comments }})
+                    {% endif %}
+                </div>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+      </div>
+  </div>
 </div>
 {% endblock %}

@@ -10,6 +10,7 @@
 {% endblock %}
 
 {% block content %}
+<h1 class="h1-details">Fixtures Details</h1>
 <div class="fixture-container">
   <!-- Header -->
   <div class="header">
@@ -41,21 +42,26 @@
         </div>
       </div>
 
-    <!-- Goal Scorers -->
+      <!-- Goal Scorers -->
       <div class="goal-scorers">
         <div class="home-scorers">
-          {% for event in fixture.events %}
-            {% if event.type == "Goal" and event.team.id == fixture.teams.home.id %}
-              <div class="scorer">
-                {{ event.player.name }} {{ event.time.elapsed }}'
-                {% if event.detail != "Normal Goal" %}
-                  ({{ event.detail }})
+            {% for event in fixture.events %}
+                {% if event.type == "Goal" and event.team.id == fixture.teams.home.id %}
+                    <div class="scorer">
+                        {% if event.time.extra %}
+                            {{ event.player.name }} {{ event.time.elapsed }}+{{ event.time.extra }}'
+                        {% else %}
+                            {{ event.player.name }} {{ event.time.elapsed }}'
+                        {% endif %}
+                        {% if event.detail != "Normal Goal" %}
+                            ({{ event.detail }})
+                        {% endif %}
+                    </div>
                 {% endif %}
-              </div>
-            {% endif %}
-          {% endfor %}
+            {% endfor %}
         </div>
       </div>
+
     </div>
 
     <!-- SCORES -->
@@ -89,14 +95,18 @@
       <div class="goal-scorers">
         <div class="away-scorers">
           {% for event in fixture.events %}
-            {% if event.type == "Goal" and event.team.id == fixture.teams.away.id %}
-              <div class="scorer">
-                {{ event.player.name }} {{ event.time.elapsed }}'
-                {% if event.detail != "Normal Goal" %}
-                  ({{ event.detail }})
-                {% endif %}
-              </div>
-            {% endif %}
+              {% if event.type == "Goal" and event.team.id == fixture.teams.away.id %}
+                  <div class="scorer">
+                      {% if event.time.extra %}
+                          {{ event.player.name }} {{ event.time.elapsed }}+{{ event.time.extra }}'
+                      {% else %}
+                          {{ event.player.name }} {{ event.time.elapsed }}'
+                      {% endif %}
+                      {% if event.detail != "Normal Goal" %}
+                          ({{ event.detail }})
+                      {% endif %}
+                  </div>
+              {% endif %}
           {% endfor %}
         </div>
       </div>

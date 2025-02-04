@@ -273,7 +273,7 @@ def fixture_details(request):
     return render(request, "fixture_details.html", {"fixture": fixture_data})
 
 
-def lineup(request):
+def lineup(request):    
     return render(request, "lineup.html")
 
 def events(request):

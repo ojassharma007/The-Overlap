@@ -1,43 +1,56 @@
 /* Container for the events */
-.events {
+.event-grid{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    max-width: 900px;
-    margin: 30px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 4rem;
+    gap: 20px;
 }
+.home-events, .away-events{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 16px;
+    background-color: rgba(43, 43, 43, 1.0);
+}
+
+.home-events {
+    border-left: 5px solid #007BFF;
+}
+
+.away-events {
+    border-right: 5px solid #FF5733;
+}
+
 
 /* Header Styling */
 h2 {
-    font-size: 38px;
+    font-size: 50px;
     text-align: center;
-    color: #ffffff;
-    margin-bottom: 20px;
+    color: #146d47;
 }
 
 /* Styling for team event containers */
 .team-events {
     margin-bottom: 40px;
+    
 }
 
 /* Team name section */
 .team-events h3 {
     font-size: 1.5rem;
     text-align: center;
-    color: #444;
+    color: #ffffff;
     margin-bottom: 15px;
     text-transform: uppercase;
     letter-spacing: 1px;
+    
 }
 
 /* List styling */
-ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.events-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
 /* Individual event items */
@@ -45,66 +58,36 @@ ul {
     display: flex;
     align-items: center;
     padding: 15px;
-    border-bottom: 1px solid #ddd;
-    transition: background-color 0.3s;
-}
-
-.event-item:hover {
-    background-color: #f9f9f9;
+    margin: 4px;
+    border-radius: 10px;
+    border: 3px solid #929292;
 }
 
 /* Event time styling */
 .event-time {
-    font-size: 1rem;
-    color: #777;
+    font-size: 20px;
+    color: #146d47;
     margin-right: 20px;
     font-weight: bold;
-}
-
-/* Team logo styling */
-.team-logo {
-    width: 40px;
-    height: auto;
-    border-radius: 50%;
-    margin-right: 15px;
 }
 
 /* Event description styling */
 .event-description {
     font-size: 1rem;
-    color: #555;
-    flex: 1;
+    color: #f3eeee;
 }
 
-/* Styling for event types like Goal, Card, etc. */
-.goal {
-    color: #28a745;
-    font-weight: bold;
+.in-event {
+    color: rgb(19, 248, 19);
 }
 
-.yellow-card {
-    color: #ffc107;
-    font-weight: bold;
+.out-event {
+    color: red;
 }
 
-.red-card {
-    color: #dc3545;
-    font-weight: bold;
+.goal{
+    color: green;
 }
-
-.substitution {
-    color: #17a2b8;
-    font-weight: bold;
-}
-
-/* Optional Comments section */
-.comments {
-    margin-top: 10px;
-    font-size: 0.9rem;
-    color: #666;
-}
-
-/* Adding a margin at the bottom of event list items */
-.event-item:last-child {
-    border-bottom: none;
+.st{
+    color: #97999c;
 }

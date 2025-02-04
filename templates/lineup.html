@@ -1,42 +1,77 @@
 {% block content %}
 <!-- Lineups Section -->
-<div class="abc">
-<h2>Lineups</h2>
-</div>
-{% for team_lineup in fixture.lineups %}
-    <div class="bc">
+<h2 class="lineup-title">Lineups</h2>
+
+<div class="lineup-container">
+
+    <!-- Home Team Lineup -->
+    <div class="lineup home-team">
         <h3>
-            {{ team_lineup.team.name }} ({{ team_lineup.formation }})
-            <img src="{{ team_lineup.team.logo }}" alt="{{ team_lineup.team.name }}" width="50">
+            <img src="{{ fixture.teams.home.logo }}" alt="{{ fixture.teams.home.name }}" class="team-logo">
+            {{ fixture.teams.home.name }} ({{ fixture.lineups.0.formation }})
         </h3>
 
-        <!-- Coach Details -->
-        <p>
-            <strong>Coach:</strong> {{ team_lineup.coach.name }}<br>
-            <img src="{{ team_lineup.coach.photo }}" alt="Coach Photo" width="50">
+        <p class="coach-info">
+            <strong>Coach:</strong> {{ fixture.lineups.0.coach.name }}<br>
+            <img src="{{ fixture.lineups.0.coach.photo }}" alt="Coach Photo" class="coach-photo">
         </p>
 
-        <!-- Starting XI -->
-        <h4>Starting XI</h4>
-        <ul>
-            {% for player in team_lineup.startXI %}
-                <li>
-                    {{ player.player.name }} (#{{ player.player.number }} | {{ player.player.pos }} Grid: {{ player.player.grid }})
-                </li>
-            {% endfor %}
-        </ul>
+        <div class="formation">
+            <h4>Starting XI</h4>
+            <ul class="players-list">
+                {% for player in fixture.lineups.0.startXI %}
+                    <li>
+                    🙎🏻‍♂️{{ player.player.name }} (#{{ player.player.number }}) ({{ player.player.pos }})
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
 
-        <!-- Substitutes -->
-        <h4>Substitutes</h4>
-        <ul>
-            {% for sub in team_lineup.substitutes %}
-                <li>
-                    {{ sub.player.name }} (#{{ sub.player.number }} | {{ sub.player.pos }})
-                </li>
-            {% endfor %}
-        </ul>
+        <div class="substitutes">
+            <h4>Substitutes</h4>
+            <ul class="players-sub">
+                {% for sub in fixture.lineups.0.substitutes %}
+                    <li>
+                        {{ sub.player.name }}(#{{ sub.player.number }})({{ sub.player.pos }}),
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 
+    <!-- Away Team Lineup -->
+    <div class="lineup away-team">
+        <h3>
+            <img src="{{ fixture.teams.away.logo }}" alt="{{ fixture.teams.away.name }}" class="team-logo">
+            {{ fixture.teams.away.name }} ({{ fixture.lineups.1.formation }})
+        </h3>
 
-{% endfor %}
+        <p class="coach-info">
+            <strong>Coach:</strong> {{ fixture.lineups.1.coach.name }}<br>
+            <img src="{{ fixture.lineups.1.coach.photo }}" alt="Coach Photo" class="coach-photo">
+        </p>
+
+        <div class="formation">
+            <h4>Starting XI</h4>
+            <ul class="players-list">
+                {% for player in fixture.lineups.1.startXI %}
+                    <li>
+                    🙎🏻{{ player.player.name }} (#{{ player.player.number }}) ({{ player.player.pos }})
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="substitutes">
+            <h4>Substitutes</h4>
+            <ul class="players-sub">
+                {% for sub in fixture.lineups.1.substitutes %}
+                    <li>
+                        {{ sub.player.name }}(#{{ sub.player.number }})({{ sub.player.pos }}),
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
 {% endblock %}

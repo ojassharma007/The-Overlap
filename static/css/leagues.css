@@ -51,8 +51,8 @@
     height: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    border: 5px solid #146d47;
-    box-shadow: #ebe4e45e 10px 7px 9px 0px;
+    border: 5px solid rgba(43, 43, 43, 1.0);
+    box-shadow: #ebe4e45e 1px 5px 5px 10px;
     border-radius: 1rem;
 }
   

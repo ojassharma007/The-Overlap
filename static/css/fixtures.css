@@ -17,13 +17,14 @@
 }
   
 .scorecard {
-    background-color: rgba(255, 255, 255, 0.971);
+  color: #ffffff;
+    background-color: rgba(43, 43, 43, 1.0);
     border-radius: 10px;
     padding: 20px;
     width: 310px;
     box-sizing: border-box;
-    border: 5px solid #146d47;
-    box-shadow: #ebe4e45e 10px 7px 9px 0px;
+    border: 2px solid #929292;
+    box-shadow: #ebe4e45e 8px 7px 9px 0px;
 }
   
 .team {
@@ -56,10 +57,4 @@
   
   .match-status {
     font-size: 1em;
-  }
-  
-  .match-date {
-    text-align: center;
-    font-size: 0.9em;
-    color: #555;
   }

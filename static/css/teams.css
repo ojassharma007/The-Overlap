@@ -47,11 +47,11 @@
   color: #040404;
   background-color: #ffffff;
   border: none;
-  border-radius: 30px;
+  border-radius: 20px;
   box-shadow: 0 4px #ffffffde;
 }
   
 .btn1:active {
-  background-color: #22b877;
+  background-color: #146d47;
   transform: translateY(3px);
 }

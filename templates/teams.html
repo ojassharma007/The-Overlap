@@ -16,10 +16,10 @@
         <div class="list-1">
             <img src="{{ item.team.logo }}" alt="{{ item.team.name }} Logo" class="team-img" style="width: 100px;">
             <p class="name" >{{ item.team.name }}</p>
+            <a href="/players?team_id={{ item.team.id|urlencode }}"
+            style="text-decoration: none;" class="btn1">Players</a>
             <a href="/stats?team_id={{ item.team.id|urlencode }}&league_id={{ league_id|urlencode }}"
             style="text-decoration: none;" class="btn1">Statistics</a>
-            <a href="/players?team_id={{ item.team.id|urlencode }}"
-            style="text-decoration: none;" class="btn1">players</a>
         </div>
     </div>
     {% endfor %}

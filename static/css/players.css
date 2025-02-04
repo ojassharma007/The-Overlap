@@ -38,11 +38,12 @@
 }
 
 .pl-data {
+  color: #ffffff;
   display: flex;
   align-items: center;
   border: 3px solid #146d47;
   border-radius: 10px;
-  background-color: white;
+  background-color: rgba(43, 43, 43, 1.0);
   transition: transform 0.3s ease;
 }
 

@@ -1,3 +1,26 @@
+/* Variables for consistent theming */
+:root {
+  --primary: #3a86ff;
+  --primary-dark: #2667cc;
+  --secondary: #ff006e;
+  --dark: #1a1a2e;
+  --light: #ffffff;
+  --gray-100: #f8f9fa;
+  --gray-200: #e9ecef;
+  --gray-300: #dee2e6;
+  --gray-400: #ced4da;
+  --gray-500: #adb5bd;
+  --gray-600: #6c757d;
+  --gray-700: #495057;
+  --gray-800: #343a40;
+  --gray-900: #212529;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+  --radius: 8px;
+}
+
+
 /* Home */
 
 #home-section {
@@ -182,4 +205,64 @@
     object-fit: fill;
     overflow: hidden;
     margin-top: 1.5rem;
+  }
+
+  .popular-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .popular-card {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--gray-100);
+    border-radius: var(--radius);
+    transition: var(--transition);
+  }
+
+  .popular-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+  
+  .player-image {
+    border-radius: var(--radius);
+    object-fit: cover;
+    width: 100px;
+    height: 120px;
+  }
+  
+  .player-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .player-info p {
+    color: var(--gray-600);
+    font-size: 0.875rem;
+  }
+  
+  .player-stats {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .stat-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+  
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--gray-600);
   }

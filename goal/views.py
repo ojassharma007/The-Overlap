@@ -216,17 +216,27 @@ def players(request):
         }
         conn.request("GET", f"/players/squads?team={team_id}", headers=headers)
         res = conn.getresponse()
+
         if res.status == 200:
             data = res.read()
             data_json = json.loads(data.decode("utf-8"))
             cache.set(cache_key, data_json, timeout=86400)
         else:
+            # Log the error and show message
             print(f"Error: {res.status}")
-            data_json = {"response": []}
+            return render(request, "players.html", {"error": f"API request failed with status {res.status}"})
         conn.close()
 
-    team_data = data_json.get("response", [])[0]
-    return render(request, "players.html", {"team_data": team_data})
+    # Check if the response contains any players
+    team_data = data_json.get("response", [])
+    if not team_data:
+        # No players found, return an error message
+        return render(request, "players.html", {"error": "No players found for this team."})
+    else:
+        # Proceed if players exist
+        team_data = team_data[0]  # Assuming first item in the list is the desired squad data
+        return render(request, "players.html", {"team_data": team_data})
+
 
 def fixture_details(request):
     fixture_id = request.GET.get("id")
@@ -281,3 +291,23 @@ def events(request):
 
 def fixture_stats(request):
     return render(request, "fixture_stats.html")
+
+def player_profile(request):
+    player_id = request.GET.get("id")  # This is the key fix
+    cache_key = f"player_stats_{player_id}"
+    data_json = cache.get(cache_key)
+
+    if not data_json:
+        conn = http.client.HTTPSConnection("v3.football.api-sports.io")
+        headers = {
+            'x-rapidapi-host': "v3.football.api-sports.io",
+            'x-rapidapi-key': config.API_KEY  
+        }
+        conn.request("GET", f"/players/profiles?player={player_id}", headers=headers)
+        res = conn.getresponse()
+        data = res.read()
+        data_json = json.loads(data.decode("utf-8"))
+        cache.set(cache_key, data_json, 60 * 60)  # Cache for 1 hour
+
+    players_data = data_json.get('response', [])
+    return render(request, "player_stats.html", {"players": players_data})

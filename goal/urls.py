@@ -15,7 +15,8 @@ urlpatterns = [
     path("lineup/", views.lineup, name="lineup"),
     path("events/", views.events, name="events"),
     path("fixture_stats/", views.fixture_stats, name="fixture_stats"),
-
+    path("player_profile/", views.player_profile, name="player_profile"),
+    
     path("__reload__/", include("django_browser_reload.urls")),
 
 ]

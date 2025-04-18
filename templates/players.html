@@ -18,7 +18,7 @@
 
 <div class="players">
     {% for player in team_data.players %}
-    <div class="pl-data">
+    <a class="pl-data" href="/player_profile?id={{ player.id|urlencode }}">
         <img src="{{ player.photo }}" alt="🙎🏻‍♂️" class="pl-img">
 
         <div class="pl-info">   
@@ -27,7 +27,7 @@
             <p>({{ player.number }})</p>
         </div>
 
-    </div>
+    </a>
     {% endfor %}
 </div>
 {% else %}

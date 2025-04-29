@@ -4,28 +4,29 @@
 
 {% load static %}
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/players.css' %}">
+<link rel="stylesheet" href="{% static 'css/player_stats.css' %}">
 {% endblock %}
 
 {% block content %}
-<div class="player-profile">
-    {% for player in players %}
-        <h2>Player Profile: {{ player.player.name }}</h2>
-        <div class="profile-card">
-            <img src="{{ player.player.photo }}" alt="{{ player.player.name }}">
-            <div class="info">
-                <p><strong>Full Name:</strong> {{ player.player.firstname }} {{ player.player.lastname }}</p>
-                <p><strong>Age:</strong> {{ player.player.age }}</p>
-                <p><strong>Date of Birth:</strong> {{ player.player.birth.date }}</p>
-                <p><strong>Place of Birth:</strong> {{ player.player.birth.place }}, {{ player.player.birth.country }}</p>
-                <p><strong>Nationality:</strong> {{ player.player.nationality }}</p>
-                <p><strong>Height:</strong> {{ player.player.height }}</p>
-                <p><strong>Weight:</strong> {{ player.player.weight }}</p>
-                <p><strong>Position:</strong> {{ player.player.position }}</p>
-                <p><strong>Jersey Number:</strong> #{{ player.player.number }}</p>
+    <div class="acc">
+        {% for player in players %}
+            <h2 class="head2"> Profile of {{ player.player.name }}</h2>
+            <div class="acc-card">
+                <img src="{{ player.player.photo }}" alt="{{ player.player.name }}">
+                <div class="info">
+                    <p><strong>Full Name:</strong> {{ player.player.firstname }} {{ player.player.lastname }}</p>
+                    <p><strong>Age:</strong> {{ player.player.age }}</p>
+                    <p><strong>Date of Birth:</strong> {{ player.player.birth.date }}</p>
+                    <p><strong>Place of Birth:</strong> {{ player.player.birth.place }}, {{ player.player.birth.country }}</p>
+                    <p><strong>Nationality:</strong> {{ player.player.nationality }}</p>
+                    <p><strong>Height:</strong> {{ player.player.height }}</p>
+                    <p><strong>Weight:</strong> {{ player.player.weight }}</p>
+                    <p><strong>Position:</strong> {{ player.player.position }}</p>
+                    <p><strong>Jersey Number:</strong> #{{ player.player.number }}</p>
+                </div>
             </div>
-        </div>
-    {% empty %}
+        {% empty %}    
+    </div>
         <p>No player data found.</p>
     {% endfor %}
 </div>

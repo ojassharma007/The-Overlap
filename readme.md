@@ -1,4 +1,4 @@
-# Django Football Project
+# The Overlap - Django based Football Project
 
 ## Overview
 The Django Football project is a web application designed to provide football-related information, including leagues, live fixtures, player stats, and standings. It features a responsive design and interactive UI components.

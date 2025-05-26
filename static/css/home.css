@@ -162,13 +162,11 @@
   }
   
   .home-title {
-    font-size: 1.5em;
+    font-size: 1.5rem;
     font-weight: 600;
   }
   
   .home-front {
-    display: flex;
-    color: balck;
     display: flex;
     align-items: center;
     gap: 3rem;
@@ -193,14 +191,17 @@
     width: 100%;
     max-width: 1080px;
     margin-top: 48px;
-
   }
 
   .popular-card {
-    gap: 1rem;
-    padding: 2rem;
-    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
     transition: all 0.3s ease;
+    background-color: white;
+    width: 220px;
+    aspect-ratio: 4/5;
     text-decoration: none;
     border-radius: 1rem;
     border: 5px solid rgba(43, 43, 43, 1.0);
@@ -214,16 +215,17 @@
   
   .player-image {
     border-radius: 12px;
-    object-fit: cover;
-    width: 100px;
-    height: 120px;
+    width: 50%;
+    aspect-ratio: 1;
+    object-fit: fill;
+    overflow: hidden;
+    margin-top: 1.5rem;
     border: 2px solid #146d47;
   }
   
   .player-info {
-    display: flex;
-    flex-direction: column; 
-    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 600;
   }
   
   .player-stats {
@@ -231,3 +233,183 @@
     gap: 1.5rem;
     margin-top: 0.5rem;
   }
+
+  /* Media Queries */
+
+/* For tablets and below (width ≤ 1024px) */
+@media screen and (max-width: 1024px) {
+  #home-section {
+    flex-direction: row;
+    padding: 20px;
+    height: auto;
+  }
+
+  #home-section img {
+    width: 70%;
+    scale: 0.5;
+  }
+
+  .hero {
+    width: 100%;
+  }
+
+  .hero-heading {
+    font-size: 40px;
+  }
+
+  .hero-subheading,
+  .hero-features {
+    font-size: 16px;
+  }
+
+  .home-card,
+  .popular-grid {
+    gap: 2rem;
+  }
+
+  .h1 {
+    font-size: 2.5rem;
+  }
+  .home {
+    width: 20%;
+  }
+
+  .home-front {
+    flex-direction: column-reverse;
+  }
+  .home-img {
+    width: 45%;
+  }
+
+  .popular-card {
+    width: 20%;
+  }
+
+}
+
+
+
+/* For mobile devices (width ≤ 768px) */
+@media screen and (max-width: 768px) {
+  #home-section {
+    height: auto;
+    min-height: 100vh;
+    padding: 20px;
+
+  }
+
+  #home-section img {
+    width: 50%;
+    transform: none;
+    scale: 0.5; 
+
+  }
+
+  .hero-heading {
+    font-size: 28px;
+  }
+
+  .hero-subheading,
+  .hero-features {
+    font-size: 12px;
+  }
+
+  .front {
+    padding: 12px 24px;
+    font-size: 12px;
+  }
+
+  .home-card,
+  .popular-grid {
+    gap: 2rem;
+  }
+
+  .home {
+    width: 20%;
+  }
+
+  .home-title {
+    font-size: 1rem;
+  }
+
+  .home-img {
+    width: 40%;
+  }
+
+  .h1 {
+    font-size: 2rem;
+  }
+
+  .popular-card {
+    width: 20%;
+  }
+
+  .player-image {
+    width: 68px;
+    height: 68px;
+  }
+
+  .player-info {
+    font-size: 1rem;
+    
+  }
+}
+
+/* For small mobile devices (width ≤ 480px) */
+@media screen and (max-width: 480px) {
+  #home-section {
+    padding: 10px;
+  }
+  #home-section img {
+    width: 40%;
+    transform: none;
+    scale: 0.6;
+  }
+
+
+  .hero-heading {
+    font-size: 20px;
+  }
+
+  .hero-subheading,
+  .hero-features {
+    font-size: 8px;
+  }
+
+  .front {
+    font-size: 8px;
+    padding: 10px 20px;
+  }
+  .home {
+    aspect-ratio: 16/9;
+  }
+
+  .home-card {
+    display: flex;
+    gap: 2rem;
+    
+  }
+
+  .home-img {
+    width: 44%;
+  }
+
+  .player-image {
+    width: 48px;
+    height: 48px;
+  }
+
+  .h1 {
+    font-size: 1.5rem;
+  }
+
+  .home-title {
+    font-size: 0.6rem;
+    margin-bottom: 10px;
+  }
+
+  .player-info {
+    font-size: 0.7rem;
+    margin-bottom: 10px;
+  }
+}

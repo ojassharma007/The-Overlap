@@ -270,7 +270,7 @@
     font-size: 2.5rem;
   }
   .home {
-    width: 20%;
+    width: 22%;
   }
 
   .home-front {
@@ -384,22 +384,31 @@
     padding: 10px 20px;
   }
   .home {
-    aspect-ratio: 16/9;
+    width: 28%;
   }
 
   .home-card {
     display: flex;
-    gap: 2rem;
-    
+    gap: 6rem;
+  }
+  .home-front{
+    gap: 2.5rem;
   }
 
   .home-img {
-    width: 44%;
+    width: 40%;
   }
-
+  
+  .popular-grid {
+    gap: 6rem;
+  }
+  .popular-card {
+    width: 28%;
+    gap: 2.5rem;
+  }
   .player-image {
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
   }
 
   .h1 {
@@ -407,12 +416,10 @@
   }
 
   .home-title {
-    font-size: 0.6rem;
-    margin-bottom: 10px;
+    font-size: 0.7rem;
   }
 
   .player-info {
     font-size: 0.7rem;
-    margin-bottom: 10px;
   }
 }

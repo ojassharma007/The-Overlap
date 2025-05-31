@@ -2,7 +2,7 @@
 
 #home-section {
     display: flex;
-    padding: 34px;
+    
     height: calc(100vh - 81px);
     position: relative;
     align-items: center;
@@ -11,7 +11,6 @@
   
   #home-section img {
     scale: 0.6;
-    width: 40%;
   }
   
   .hero {
@@ -293,7 +292,7 @@
 @media screen and (max-width: 768px) {
   #home-section {
     height: auto;
-    min-height: 100vh;
+    min-height: 70vh;
     padding: 20px;
 
   }
@@ -358,8 +357,8 @@
 /* For small mobile devices (width ≤ 480px) */
 @media screen and (max-width: 480px) {
   #home-section {
-    flex-direction: column;
-    padding: 10px;
+    flex-direction: column-reverse;
+    
   }
   #home-section img {
     width: 40%;
@@ -367,6 +366,7 @@
     scale: 0.8;
   }
   .hero {
+    
     align-items: center;
   }
 
@@ -376,7 +376,7 @@
 
   .hero-subheading,
   .hero-features {
-    font-size: 8px;
+    font-size: 10px;
   }
 
   .front {

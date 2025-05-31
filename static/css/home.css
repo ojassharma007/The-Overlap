@@ -358,14 +358,17 @@
 /* For small mobile devices (width ≤ 480px) */
 @media screen and (max-width: 480px) {
   #home-section {
+    flex-direction: column;
     padding: 10px;
   }
   #home-section img {
     width: 40%;
     transform: none;
-    scale: 0.6;
+    scale: 0.8;
   }
-
+  .hero {
+    align-items: center;
+  }
 
   .hero-heading {
     font-size: 20px;

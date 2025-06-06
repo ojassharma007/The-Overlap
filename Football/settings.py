@@ -142,8 +142,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
-        "LOCATION": os.path.join(BASE_DIR, "django_cache"),  # Use an absolute path
-        "TIMEOUT": 86400,  # Cache timeout in seconds (24 hours)
+        "LOCATION": "/tmp/django_cache",
+        "TIMEOUT": 86400,
     }
 }
 

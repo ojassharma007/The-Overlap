@@ -6,7 +6,7 @@
     font-size: 3rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
-    color: #ffffff;
+    color: #0bec8c;
 }
   
 /* STATS Team Header */
@@ -22,7 +22,7 @@
     background-color: rgba(43, 43, 43, 1.0);
     border-radius: 2rem;
     box-shadow: 0 5px 5px rgba(255, 255, 255, 0.47);
-    border: 2px solid #929292;
+    border: 5px solid #929292;
     transition: transform 0.3s ease;
 }
   
@@ -65,8 +65,8 @@
     letter-spacing: 10px;
     font-size: 1.2em;
     font-weight: 300;
-    color: #ffffff; /* Green for positive form */
-    background: #515151; /* Light green background */
+    color: #000000;
+    background: rgb(146, 142, 142);
     padding: 10px 150px;
     border-radius: 8px;
     text-align: center;
@@ -174,4 +174,150 @@
     font-size: 1.2em;
     font-weight: bold;
     color: #000000;
+}
+
+
+
+@media screen and (max-width: 1024px) {
+  .st-head {
+    font-size: 2.5rem;
+  }
+
+  .team-header {
+    gap: 40px;
+    margin: 2rem;
+    padding: 2rem;
+  }
+
+  .st-name {
+    font-size: 2rem;
+  }
+
+  .st-info {
+    font-size: 1.5rem;
+  }
+
+  .st-logo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .xyz {
+    margin: 1rem 5rem;
+  }
+
+  .team-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font-size: 1em;
+    letter-spacing: 5px;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .st-head {
+    font-size: 2rem;
+  }
+
+  .team-header {
+    gap: 40px;
+    margin: 1.5rem;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .st-name {
+    font-size: 2rem;
+  }
+
+  .st-info {
+    font-size: 1.2rem;
+  }
+
+  .st-logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .xyz {
+    margin: 1rem 2rem;
+  }
+  .card-title {
+    font-size: 1.5rem;
+  }
+  .team-form {
+    padding: 10px 50px;
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+    .st-data {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+  .st-head {
+    font-size: 1.6rem;
+    margin: 1rem;
+  }
+
+  .team-header {
+    gap: 30px;
+    margin: 1rem;
+    padding: 1rem;
+    flex-direction: column;
+  }
+
+  .st-name {
+    font-size: 1.5rem;
+  }
+
+  .st-info {
+    font-size: 1rem;
+  }
+
+  .st-logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  .xyz {
+    margin: 0.5rem;
+  }
+
+  .team-form {
+    padding: 8px 12px;
+    font-size: 0.5rem;
+    letter-spacing: 2px;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    padding: 0.5rem;
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+
+  .st-data {
+    font-size: 1rem;
+  }
+
+  .st-data li {
+    font-size: 0.6rem;
+    padding: 10px;
+  }
 }

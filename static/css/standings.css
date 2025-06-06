@@ -1,45 +1,99 @@
-/* Standings */
-
 .h1-standings {
-    display: flex;
-    justify-content: center;
-    font-size: 3rem;
-    margin-top: 2rem;
-    color: white;
+  text-align: center;
+  font-size: 3rem;
+  color: #0bec8c;
+  margin-top: 2rem;
+}
+
+.standings-table-wrapper {
+  max-width: 98%;
+  margin: 2rem ;
+  overflow-x: auto;
+}
+
+/* TABLE BASE */
+.standings-table {
+  width: 100%;
+  border-radius: 5px;
+  color: #ffffff;
+  background-color: #252525;
+  font-size: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+/* HEADERS */
+.standings-table tbody {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+}
+
+/* CELLS */
+.standings-table th,
+.standings-table td {
+  text-align: center;
+  padding: 12px;
+  border: 1px solid #262626; /* <-- Line between rows & columns */
+}
+
+/* IMAGES */
+.standings-table td img {
+  vertical-align: middle;
+}
+
+
+
+@media screen and (max-width: 1024px) {
+
+  .standings-table {
+    font-size: 0.95rem;
   }
-  
-  #grid {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 50px 0px;
-    font-size: 1.1em;
-    text-align: left;
-    max-width: 90%;
-    margin: 2rem auto;
-    border-radius: 20px;
-    overflow: hidden;
+
+  .standings-table th,
+  .standings-table td {
+    padding: 10px;
   }
-  
-  #grid thead tr {
-    background-color: rgb(32, 31, 31);
-    color: #ffffff;
+
+  .h1-standings {
+    font-size: 2.5rem;
   }
-  
-  #grid th,
-  #grid td {
-    padding: 1rem 1rem;
-    border: 2px solid black;
+}
+
+@media screen and (max-width: 768px) {
+  .standings-table {
+    font-size: 0.85rem;
   }
-  
-  #grid tbody tr {
-    border-bottom: 1px solid #000000;
-    background-color: #ffffff;
+
+  .standings-table th,
+  .standings-table td {
+    padding: 8px;
   }
-  
-  #grid tbody tr:nth-of-type(even) {
-    background-color: #ffffff;
+
+  .h1-standings {
+    font-size: 1.8rem;
   }
-  
-  #grid tbody tr:last-of-type {
-    border-bottom: 1px solid #ffffff;
+
+  .standings-table td img {
+    width: 20px;
+    height: auto;
   }
+}
+
+@media screen and (max-width: 480px) {
+  .standings-table-wrapper {
+    margin: 1rem;
+  }
+
+  .standings-table th,
+  .standings-table td {
+    padding: 6px;
+    font-size: 0.75rem;
+  }
+
+  .h1-standings {
+    font-size: 1.5rem;
+  }
+
+  .standings-table td img {
+    width: 18px;
+  }
+}

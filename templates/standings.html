@@ -1,25 +1,26 @@
 {% extends 'base.html' %}
 
-{% block title %}Standings {% endblock title %}
+{% block title %}Standings{% endblock title %}
 
 {% load static %}
 {% block css %}
-    <link rel="stylesheet" href="{% static 'css/standings.css' %}">
+  <link rel="stylesheet" href="{% static 'css/standings.css' %}">
 {% endblock %}
-
 
 {% block content %}
 <h1 class="h1-standings">League Standings</h1>
-<table id="grid">
-    <thead>
+
+<div class="standings-table-wrapper">
+    <table class="standings-table">
+        <thead>
         <tr>
-            <th width="50px" align="center">Position</th>
+            <th>Position</th>
             <th>Logo</th>
             <th>Team</th>
-            <th>Matches</th>
-            <th>Win</th>
+            <th>Played</th>
+            <th>Won</th>
             <th>Draw</th>
-            <th>Lose</th>
+            <th>Lost</th>
             <th>Points</th>
             <th>GF</th>
             <th>GA</th>
@@ -27,32 +28,30 @@
             <th>Form</th>
             <th>Group</th>
         </tr>
-    </thead>
-
-    <tbody>
+        </thead>
+        <tbody>
         {% for item in standings %}
-        {% for league in item.league.standings %}
-        {% for team in league %}
-        <tr>
-            <td align="center">{{ team.rank }}</td>
-            <td><img src="{{ team.team.logo }}" alt="{{ team.team.name }}" width="30"></td>
-            <td>{{ team.team.name }}</td>
-            <td>{{ team.all.played }}</td>
-            <td>{{ team.all.win }}</td>
-            <td>{{ team.all.lose }}</td>
-            <td>{{ team.all.draw }}</td>
-            <td>{{ team.points }}</td>
-            <td>{{ team.all.goals.for }}</td>
-            <td>{{ team.all.goals.against }}</td>
-            <td>{{ team.goalsDiff }}</td>
-            <td>{{ team.form | default:"N.A." }}</td>
-            {% if team.group %}
-            <td>{{ team.group }}</td>
-            {% endif %}
-        </tr>
+            {% for league in item.league.standings %}
+            {% for team in league %}
+                <tr>
+                <td>{{ team.rank }}</td>
+                <td><img src="{{ team.team.logo }}" alt="{{ team.team.name }}" width="30"></td>
+                <td>{{ team.team.name }}</td>
+                <td>{{ team.all.played }}</td>
+                <td>{{ team.all.win }}</td>
+                <td>{{ team.all.draw }}</td>
+                <td>{{ team.all.lose }}</td>
+                <td>{{ team.points }}</td>
+                <td>{{ team.all.goals.for }}</td>
+                <td>{{ team.all.goals.against }}</td>
+                <td>{{ team.goalsDiff }}</td>
+                <td>{{ team.form|default:"N.A." }}</td>
+                <td>{{ team.group|default:"-" }}</td>
+                </tr>
+            {% endfor %}
+            {% endfor %}
         {% endfor %}
-        {% endfor %}
-        {% endfor %}
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
 {% endblock %}

@@ -5,7 +5,7 @@
     justify-content: center;
     font-size: 3rem;
     margin-top: 4rem;
-    color: #ffffff;
+    color: #0bec8c;
 }
   
 .lg {
@@ -100,24 +100,235 @@
     font-weight: 600;
 }
 
-.button {
-    display: inline-block;
-    margin: 2rem 35rem;
-    padding: 5px 10px;
-    font-size: 24px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: #000000;
-    background-color: #ffffff;
+.pushable {
+    margin: 16px auto 0; /* top: 16px, horizontal: auto, bottom: 0 */
+    position: relative;
+    background: transparent;
+    padding: 0px;
     border: none;
-    border-radius: 20px;
-    box-shadow: 0 9px #999;
+    cursor: pointer;
+    outline-offset: 4px;
+    transition: filter 250ms;
+    width: max-content;
+    margin-top: 16px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+  
+  .shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: hsl(240, 14%, 1%);
+    border-radius: 8px;
+    filter: blur(2px);
+    will-change: transform;
+    transform: translateY(2px);
+    transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+  }
+  
+  .edge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+    background: linear-gradient(
+      to right,
+      hsl(154, 69%, 25%) 0%,
+      hsl(154, 69%, 25%) 8%,
+      hsl(154, 69%, 25%) 92%,
+      hsl(154, 69%, 25%) 100%
+    );
+  }
+  
+  .front {
+    display: block;
+    position: relative;
+    border-radius: 8px;
+    background: hsl(154, 69%, 43%);
+    padding: 16px 32px;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 1rem;
+    transform: translateY(-4px);
+    transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+  }
+  
+  .pushable:hover {
+    filter: brightness(110%);
+  }
+  
+  .pushable:hover .front {
+    transform: translateY(-6px);
+    transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+  }
+  
+  .pushable:active .front {
+    transform: translateY(-2px);
+    transition: transform 34ms;
+  }
+  
+  .pushable:hover .shadow {
+    transform: translateY(4px);
+    transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+  }
+  
+  .pushable:active .shadow {
+    transform: translateY(1px);
+    transition: transform 34ms;
+  }
+  
+  .pushable:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+
+  /* For tablets and smaller (width ≤ 1024px) */
+@media screen and (max-width: 1024px) {
+  .heading {
+    font-size: 2.5rem;
+    margin-top: 3rem;
+    
+  }
+
+  .lg {
+    gap: 3rem;
+    padding: 2rem;
+  }
+
+  .lg .flip-card {
+    width: 200px;
+  }
+
+  .lg.flip-card-front {
+    padding: 1rem;
+  }
+  .lg.league-card-title {
+    font-size: 1rem;
+  }
+  
+  .lg .flip-card h2 {
+    font-size: 1rem;
+  }
+  
+.lg .flip-card p{
+    font-size: 0.9rem;
+  }
+
+  .lg .leagues-images {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
   
-.button:active {
-    background-color: #22b877;
-    box-shadow: 0 5px #faf9f9dc;
-    transform: translateY(4px);
+  .pushable .front {
+    font-size: 0.95rem;
+    padding: 16px 32px;
+  }
+}
+
+  .lg .flip-card-back a {
+    font-size: 1rem;
+  }
+
+  .pushable .front {
+    font-size: 0.9rem;
+    padding: 14px 28px;
+  }
+
+
+/* For mobile devices (width ≤ 768px) */
+@media screen and (max-width: 768px) {
+  .heading {
+    font-size: 2rem;
+    margin-top: 2.5rem;
+  }
+
+  .lg {
+    padding: 1.5rem;
+  }
+
+  .lg .flip-card {
+    width: 140px;
+  }
+
+  .lg .flip-card-front {
+    gap: 1rem;
+  }
+  .lg .flip-card h2 {
+    font-size: 0.7rem;
+  } 
+  .lg .flip-card p {
+    font-size: 0.6rem;
+  }
+
+  .lg .flip-card-back a {
+    font-size: 0.7rem;
+  }
+
+  .lg .leagues-images {
+    width: 40%;
+  }
+
+  .pushable .front {
+    font-size: 0.7rem;
+    padding: 12px 24px;
+  }
+}
+
+/* For small mobile devices (width ≤ 480px) */
+@media screen and (max-width: 480px) {
+  .heading {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .lg .flip-card {
+    width: 100px;
+  }
+
+  .lg .flip-card-back a {
+    font-size: 0.85rem;
+  }
+
+  .lg .leagues-images {
+    width: 35%;
+  }
+
+  .lg .flip-card-front {
+    gap: 0.5rem;
+  }
+  .lg .flip-card h2 {
+    font-size: 0.7rem;
+  } 
+  .lg .flip-card p {
+    font-size: 0.6rem;
+  }
+
+  .lg .league-card-title {
+       gap: 0.1rem;
+   }
+
+  .lg .flip-card h2 {
+    font-size: 0.5rem;
+  } 
+  .lg .flip-card p {
+    font-size: 0.4rem;
+  }
+  .lg .flip-card-back{
+    gap: 0.5rem;
+  }
+  .lg .flip-card-back a {
+    font-size: 0.5rem;
+  }
+
+  .pushable .front {
+    font-size: 0.5rem;
+    padding: 10px 20px;
+  }
 }

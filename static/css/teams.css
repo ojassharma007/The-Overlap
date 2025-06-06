@@ -6,7 +6,7 @@
   font-size: 3rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  color: white;
+  color: #0bec8c;
 }
   
 .list {
@@ -28,6 +28,7 @@
 }
 
 .team-img {
+  width: 100px;
   aspect-ratio: 1;
   object-fit: contain;
 }
@@ -48,10 +49,84 @@
   background-color: #ffffff;
   border: none;
   border-radius: 20px;
-  box-shadow: 0 4px #ffffffde;
+  box-shadow: 0 4px #a09f9fde;
 }
   
 .btn1:active {
   background-color: #146d47;
   transform: translateY(3px);
+}
+.btn1:hover {
+  transform: translateY(-2px);
+  background-color: #37ca8a;
+  box-shadow: 0 4px #a09f9fde, 0 6px #a09f9fde;
+}
+
+
+@media screen and (max-width: 1024px) {
+  .team-head {
+    font-size: 2.5rem;
+  }
+
+  .name {
+    font-size: 14px;
+  }
+
+  .btn1 {
+    font-size: 18px;
+    padding: 8px 12px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .team-head {
+    font-size: 2rem;
+  }
+
+  .list {
+    padding: 1rem;
+  }
+
+  .list-1 {
+    width: 120px;
+    padding: 10px;
+  }
+
+  .team-img {
+    width: 60px;
+  }
+
+  .name {
+    font-size: 12px;
+  }
+
+  .btn1 {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .team-head {
+    font-size: 1.5rem;
+  }
+
+
+  .list-1 {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .team-img {
+    width: 48px;
+  }
+
+  .name {
+    font-size: 10px;
+  }
+
+  .btn1 {
+    font-size: 10px;
+    padding: 6px 10px;
+  }
 }

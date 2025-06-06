@@ -6,7 +6,7 @@
     font-size: 3rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
-    color: #ffffff;
+    color: #0bec8c;
 }
   
 .scorecards-container {
@@ -41,7 +41,7 @@
     font-weight: 400;
   }
   
-  .team-name img {
+  .team-logo{
     margin-right: 10px;
   }
   
@@ -58,3 +58,96 @@
   .match-status {
     font-size: 1em;
   }
+
+
+
+  /* --- Media Queries for Responsive Design --- */
+/* Devices up to 1024px wide */
+@media screen and (max-width: 1024px) {
+  .h1-fixture {
+    font-size: 2.5rem;
+    margin-top: 1.8rem;
+    margin-bottom: 1.8rem;
+    text-align: center;
+  }
+
+  .scorecards-container {
+    gap: 2.5rem;
+    justify-content: center;
+  }
+
+  .scorecard {
+    width: 280px;
+    padding: 18px;
+  }
+
+  .team-name {
+    font-size: 0.95rem;
+  }
+
+  .team-score {
+    font-size: 1.4rem;
+  }
+
+  .match-status {
+    font-size: 0.95em;
+  }
+}
+
+/* Medium devices (tablets, 768px and below) */
+@media screen and (max-width: 768px) {
+  .h1-fixture {
+    font-size: 2.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .scorecards-container {
+    gap: 2rem;
+  }
+
+  .scorecard {
+    width: 44%; /* Take up more horizontal space */
+  }
+  
+  .team-name {
+    font-size: 0.8rem;
+  }
+
+  .team-score {
+    font-size: 0.8rem;
+  }
+
+  .match-status {
+    font-size: 1rem;
+  }
+}
+
+/* Small devices (phones, 480px and below) */
+@media screen and (max-width: 480px) {
+  .h1-fixture {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .scorecards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .scorecard {
+    width: 70%;
+  }
+
+  .team-name {
+    font-size: 0.7rem;
+  }
+
+  .team-score {
+    font-size: 0.7rem;
+  }
+
+  .match-status {
+    font-size: 0.8em;
+  }
+}

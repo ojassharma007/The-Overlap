@@ -8,7 +8,8 @@
     display: flex;
     align-items: center;
     background: rgba(43, 43, 43, 1.0);
-    border-radius: 15px;
+    border: 5px solid #929292;
+    border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
     padding: 20px;
@@ -44,8 +45,62 @@
 .head2{
     font-size: 3rem;
     font-weight: 400;
-    color: #ffffff;
+    color: #0bec8c;
     text-align: center;
     margin-bottom: 2rem;
 }
 
+@media screen and (max-width: 1024px) {
+  .acc-card img {
+    width: 120px;
+    height: 120px;
+    margin-right: 20px;
+  }
+
+  .info p {
+    font-size: 15px;
+  }
+
+  .head2 {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .acc-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 16px;
+  }
+
+  .acc-card img {
+    margin: 0 0 16px 0;
+  }
+
+  .info {
+    width: 100%;
+  }
+
+  .info p {
+    font-size: 14px;
+  }
+
+  .head2 {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .acc-card img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .info p {
+    font-size: 13px;
+  }
+
+  .head2 {
+    font-size: 1.5rem;
+  }
+}

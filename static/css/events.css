@@ -24,9 +24,9 @@
 
 /* Header Styling */
 h2 {
-    font-size: 50px;
+    font-size: 3rem;
     text-align: center;
-    color: #146d47;
+    color: #0bec8c;
 }
 
 /* Styling for team event containers */
@@ -66,7 +66,7 @@ h2 {
 /* Event time styling */
 .event-time {
     font-size: 20px;
-    color: #146d47;
+    color: #12a632;
     margin-right: 20px;
     font-weight: bold;
 }
@@ -90,4 +90,78 @@ h2 {
 }
 .st{
     color: #97999c;
+}
+
+@media screen and (max-width: 1024px) {
+    .event-grid {
+        grid-template-columns: 1fr;
+        margin: 3rem;
+    }
+
+    .events-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    .team-events h3 {
+        font-size: 1.4rem;
+    }
+
+    .event-item {
+        padding: 12px;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .events-grid {
+        gap: 15px;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .team-events h3 {
+        font-size: 1.3rem;
+    }
+
+    .event-time {
+        font-size: 16px;
+    }
+
+    .event-description {
+        font-size: 12px;
+    }
+
+}
+
+
+@media screen and (max-width: 480px) {
+
+    .events-grid {
+        gap: 10px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .team-events h3 {
+        font-size: 12px;
+    }
+
+    .event-time {
+        font-size: 12px;
+        margin-right: 10px;
+    }
+
+    .event-description {
+        font-size: 10px;
+    }
+
 }

@@ -1,72 +1,117 @@
-/* Centering the Card */
+/* Page title */
+.match-title {
+    font-size: 3rem;
+    text-align: center;
+    color: #0bec8c;
+}
+
+/* Container centers the card */
 .stats-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    padding: 2rem;
 }
 
-/* Card Styling */
+/* Stats Card Style */
 .stats-card {
-    margin: 4rem;
-    width: 90%;
-    background-color: rgba(43, 43, 43, 1.0);
-    padding: 20px;
-    border-radius: 12px;
-    text-align: center;
-    color: white;
+    background-color: #2b2b2b;
+    color: #fff;
+    padding: 24px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
     border-left: 5px solid #007BFF;
     border-right: 5px solid #FF5733;
 }
 
-/* Team Names and Logos */
+/* Team Header with logos */
 .team-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
-    background-color: rgba(43, 43, 43, 1.0);
-    border-radius: 8px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    background-color: #1e1e1e;
+    padding: 16px;
+    border-radius: 12px;
+    flex-wrap: wrap;
 }
 
 .team {
     display: flex;
     align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.team img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+}
+
+
+/* Statistics Layout */
+.team-statistics {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    padding: 16px;
+}
+
+/* Each stat row */
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 12px 16px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+.stat-row:hover {
+    background-color: #444;
+}
+
+/* Header Row */
+.header {
+    background: linear-gradient(to right, #5c625f, #3c3f3c);
     font-size: 18px;
     font-weight: bold;
 }
 
-.team img {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-}
-
-/* "VS" Text Styling */
-.vs {
-    font-size: 20px;
-    font-weight: bold;
-    color: #ff4d4d;
-}
-
-/* Table Styling */
-.team-statistics table {
-    width: 100%;
-    border-collapse: collapse;
+/* Text Alignment */
+.team-name, .stat-type, .stat-value {
+    flex: 1;
     text-align: center;
+    word-wrap: break-word;
+    font-size: 16px;
 }
 
-.team-statistics th, .team-statistics td {
-    padding: 10px;
-    border-bottom: 1px solid #5c5959;
-    background-color: rgba(43, 43, 43, 1.0);
-
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .match-title {
+        font-size: 2.5rem;
+    }
 }
 
-.team-statistics th {
-    background: #5c625f;
-    color: white;
-    font-weight: 500;
-    font-size: 24px;
+@media (max-width: 768px) {
+   .match-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .match-title {
+        font-size: 2rem;
+    }
+
+    .team-name, .stat-type, .stat-value {
+        font-size: 10px;
+    }
 }

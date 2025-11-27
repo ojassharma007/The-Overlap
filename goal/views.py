@@ -57,7 +57,7 @@ def fixtures(request):
         }
 
         conn.request(
-            "GET", f"/fixtures?league={fixture_id}&season=2024", headers=headers
+            "GET", f"/fixtures?league={fixture_id}&season=2025", headers=headers
         )
         res = conn.getresponse()
         if res.status == 200:

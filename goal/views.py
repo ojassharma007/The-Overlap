@@ -57,7 +57,7 @@ def fixtures(request):
         }
 
         conn.request(
-            "GET", f"/fixtures?league={fixture_id}&season=2025", headers=headers
+            "GET", f"/fixtures?league={fixture_id}&season=2024", headers=headers
         )
         res = conn.getresponse()
         if res.status == 200:
@@ -127,27 +127,27 @@ def teams(request):
 
 
 def all_leagues(request):
-    league_id = request.GET.get("id")
-    cache_key = f"teams_{league_id}"
-    data_json = cache.get(cache_key)
+    cache_key = "all_leagues_full"
+    data_json = cache.get(cache_key)  # Bug fix: use cached data if available
 
-    conn = http.client.HTTPSConnection("v3.football.api-sports.io")
-    headers = {
-        "x-rapidapi-host": "v3.football.api-sports.io",
-        "x-rapidapi-key": config.API_KEY,
-    }
+    if not data_json:
+        conn = http.client.HTTPSConnection("v3.football.api-sports.io")
+        headers = {
+            "x-rapidapi-host": "v3.football.api-sports.io",
+            "x-rapidapi-key": config.API_KEY,
+        }
 
-    # Requesting current leagues
-    conn.request("GET", "/leagues", headers=headers)
-    res = conn.getresponse()
-    if res.status == 200:
-        data = res.read()
-        data_json = json.loads(data.decode("utf-8"))  # Parse JSON response data
-        cache.set(cache_key, data_json, timeout=86400)  # Cache for 24 hours
-    else:
-        print(f"Error: {res.status}")
-        data_json = {"response": []}  # Handle API error gracefully
-    conn.close()
+        # Requesting all leagues
+        conn.request("GET", "/leagues", headers=headers)
+        res = conn.getresponse()
+        if res.status == 200:
+            data = res.read()
+            data_json = json.loads(data.decode("utf-8"))
+            cache.set(cache_key, data_json, timeout=86400)  # Cache for 24 hours
+        else:
+            print(f"Error: {res.status}")
+            data_json = {"response": []}  # Handle API error gracefully
+        conn.close()
 
     # Extracting the leagues data from the response
     leagues_data = data_json.get("response", [])
@@ -188,18 +188,28 @@ def stats(request):
     return render(request, "stats.html", {"stats": stats_data})
 
 def live_fixtures(request):
-    conn = http.client.HTTPSConnection("v3.football.api-sports.io")
-    headers = {
-        'x-rapidapi-host': "v3.football.api-sports.io",
-        'x-rapidapi-key': config.API_KEY  
-    }
-    conn.request("GET", "/fixtures?live=all", headers=headers)
-    res = conn.getresponse()
-    data = res.read()
-    data_json = json.loads(data.decode("utf-8"))
-    
+    cache_key = "live_fixtures_data"
+    data_json = cache.get(cache_key)  # Bug fix: cache live data with short TTL
+
+    if not data_json:
+        conn = http.client.HTTPSConnection("v3.football.api-sports.io")
+        headers = {
+            'x-rapidapi-host': "v3.football.api-sports.io",
+            'x-rapidapi-key': config.API_KEY
+        }
+        conn.request("GET", "/fixtures?live=all", headers=headers)
+        res = conn.getresponse()
+        if res.status == 200:
+            data = res.read()
+            data_json = json.loads(data.decode("utf-8"))
+            cache.set(cache_key, data_json, timeout=60)  # Cache for 60 seconds
+        else:
+            print(f"Error: {res.status}")
+            data_json = {'response': []}  # Handle API error gracefully
+        conn.close()
+
     fixtures_data = data_json.get('response', [])
-    
+
     return render(request, 'live_fixtures.html', {'fixtures': fixtures_data})
 
 

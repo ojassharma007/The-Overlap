@@ -136,21 +136,22 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # CACHING 24hrs
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if os.environ.get("VERCEL"):
+    CACHE_LOCATION = "/tmp/django_cache"
+else:
+    CACHE_LOCATION = os.environ.get("CACHE_LOCATION", os.path.join(BASE_DIR, "tmp", "django_cache"))
+
+CACHE_LOCATION = os.path.abspath(CACHE_LOCATION)
+try:
+    os.makedirs(CACHE_LOCATION, exist_ok=True)
+except Exception:
+    pass
 
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
-        "LOCATION": "/tmp/django_cache",
+        "LOCATION": CACHE_LOCATION,
         "TIMEOUT": 86400,
     }
 }
 
-{
-    "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
-    },
-    "staticfiles": {
-        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
-    },
-}

@@ -25,12 +25,8 @@
                     <p><strong>Jersey Number:</strong> #{{ player.player.number }}</p>
                 </div>
             </div>
-        {% empty %}    
+        {% empty %}
+            <p>No player data found.</p>
+        {% endfor %}
     </div>
-        <p>No player data found.</p>
-    {% endfor %}
-</div>
-
-
-
 {% endblock %}

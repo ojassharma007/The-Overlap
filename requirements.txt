@@ -2,4 +2,4 @@ Django==5.0.1
 django-browser-reload
 whitenoise==6.8.2
 pytz
-python-decouple==3.8
+python-dotenv>=1.0.0
